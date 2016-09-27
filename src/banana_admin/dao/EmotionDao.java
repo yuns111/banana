@@ -21,7 +21,7 @@ public class EmotionDao {
 		boolean success = false;
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into emotion (emotion_seq.nextval,?)";
+		String sql = "insert into emotion values(emotion_seq.nextval,?)";
 		
 		try {
 			
@@ -109,7 +109,7 @@ public class EmotionDao {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("감정등록시 오류가 있습니다.");
+			System.out.println("감정수정시 오류가 있습니다.");
 			e.printStackTrace();
 		} finally {
 			if(pstmt != null) {
@@ -121,5 +121,29 @@ public class EmotionDao {
 	}
 	
 	//감정 삭제 dao
+	public boolean deleteEmotion(int deleteNumber){
+		
+		boolean success = false;
+		
+		Statement stmt = null;
+		String sql = "delete from Emotion where EmotionNumber = "+deleteNumber;
+		
+		try {
+			
+			stmt = Controllers.getProgramController().getConnection().createStatement();
+			int result = stmt.executeUpdate(sql);
+			
+			if(result != 0){
+				success = true;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("감정삭제시 오류가 있습니다.");
+			e.printStackTrace();
+		}
+		
+		return success;
+	}
+	
 
 }
