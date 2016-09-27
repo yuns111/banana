@@ -1,5 +1,5 @@
 package banana_admin.domain;
 
-public class MusicDomain {
+public class Music {
 
 }
