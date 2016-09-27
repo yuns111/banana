@@ -30,6 +30,11 @@ public class EmotionUpdateDeleteView {
 	
 	public void selectOneForDelete(){
 		
+		System.out.print("삭제할 감정 번호 : ");
+		int deleteNumber = keyboard.nextInt();
+		
+		Controllers.getEmotionController().requestdeleteEmotion(deleteNumber);
+		
 	}
 
 }
