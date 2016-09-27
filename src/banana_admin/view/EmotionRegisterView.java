@@ -8,6 +8,10 @@ public class EmotionRegisterView {
 	
 	private Scanner keyboard;
 	
+	public EmotionRegisterView() {
+		
+		keyboard = new Scanner(System.in);
+	}
 	public void emotionRegister(){
 		
 		System.out.print("등록할 감정 명 : ");
