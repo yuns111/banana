@@ -3,10 +3,11 @@ package banana_admin.controller;
 public class Controllers {
 	
 	private static ProgramController programController;
-	
+	private static UserController userController;
 	public Controllers() {
 		
 		programController = new ProgramController();
+		userController=new UserController();
 		
 	}
 
@@ -16,5 +17,11 @@ public class Controllers {
 
 	}
 
+	public static UserController getUserController() {
+		return userController;
+	}
+
+
+	
 	
 }
