@@ -1,6 +1,6 @@
 package banana_admin.dao;
 
-public class Music {
+public class MusicDao {
 
 	public static void main(String[] args) {
 	
