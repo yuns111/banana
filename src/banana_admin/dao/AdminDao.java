@@ -64,18 +64,13 @@ public class AdminDao {
 			alertView.alert("관리자 등록 시 오류가 발생했습니다.");
 			e.printStackTrace();
 		} finally {
-			if(pstmt3 != null){
-				try {pstmt3.close();} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 			if(rs3 != null){
 				try {rs3.close();} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
-			if(pstmt2 != null){
-				try {pstmt2.close();} catch (SQLException e) {
+			if(pstmt3 != null){
+				try {pstmt3.close();} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
@@ -84,13 +79,18 @@ public class AdminDao {
 					e.printStackTrace();
 				}
 			}
-			if(pstmt1 != null){
-				try {pstmt1.close();} catch (SQLException e) {
+			if(pstmt2 != null){
+				try {pstmt2.close();} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 			if(rs1 != null){
 				try {rs1.close();} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pstmt1 != null){
+				try {pstmt1.close();} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
@@ -136,6 +136,47 @@ public class AdminDao {
 
 	}
 
+	public boolean searchNumberQuery(int searchAdminNumber){
+		boolean success = true;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select adminNumber from banana_admin where adminNumber = ?";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setInt(1, searchAdminNumber);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				success = false;
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null){
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}
+			if(rs != null){
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		
+		return success;
+		
+	}
 
 	//관리자 수정
 	public boolean updateAdmin(Admin updateAdminAllInfo) {
@@ -144,9 +185,9 @@ public class AdminDao {
 		Statement stmt = null;	
 
 		try {
-			String sql = "update banana_admin set adminID" + updateAdminAllInfo.getAdminID() +
+			String sql = "update banana_admin set adminID = '" + updateAdminAllInfo.getAdminID() +
 					"', adminPassword = '" + updateAdminAllInfo.getAdminPassword() +
-					"', adminName = " + updateAdminAllInfo.getAdminName() +
+					"', adminName = '" + updateAdminAllInfo.getAdminName() +
 					"' where adminNumber =" + updateAdminAllInfo.getAdminNumber();
 
 			stmt = Controllers.getProgramController().getConnection().createStatement();

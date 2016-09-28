@@ -24,7 +24,7 @@ public class updateAdminView {
 		System.out.print("관리자 번호 : ");
 		searchAdminNumber = keyboard.nextInt();
 
-		Controllers.getAdminController().requestUpdateAdmin(searchAdminNumber);
+		Controllers.getAdminController().requestSearchNumberQuery(searchAdminNumber);
 
 	}
 
@@ -39,7 +39,7 @@ public class updateAdminView {
 		System.out.println("관리자 이름 : ");
 		String adminName = keyboard.next();
 		
-		Admin adminUpdateInfo = new Admin(adminID, adminPassword, adminName);
+		Admin adminUpdateInfo = new Admin(adminNumber, adminID, adminPassword, adminName);
 		
 		Controllers.getAdminController().requestUpdateInfo(adminUpdateInfo);
 

@@ -12,6 +12,14 @@ public class Admin {
 		
 	}
 
+	public Admin(String adminID, String adminPassword, String adminName) {
+
+		this.adminID = adminID;
+		this.adminPassword = adminPassword;
+		this.adminName = adminName;
+	
+	}
+	
 	public Admin(int adminNumber, String adminID, String adminPassword, String adminName, int adminGrade) {
 		
 		this.adminNumber = adminNumber;
@@ -22,8 +30,9 @@ public class Admin {
 		
 	}
 	
-	public Admin(String adminID, String adminPassword, String adminName) {
+	public Admin(int adminNumber, String adminID, String adminPassword, String adminName) {
 
+		this.adminNumber = adminNumber;
 		this.adminID = adminID;
 		this.adminPassword = adminPassword;
 		this.adminName = adminName;

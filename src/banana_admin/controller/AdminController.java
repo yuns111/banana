@@ -52,7 +52,7 @@ public class AdminController {
 	}
 
 	//관리자 목록 
-	public void requestSelectAdmin() {
+	public void requestSelectAllAdmin() {
 
 		ArrayList<Admin> adminSelectAll = adminDao.adminSelectAll();
 
@@ -61,6 +61,18 @@ public class AdminController {
 
 	}
 
+	public void requestSearchNumberQuery(int searchAdminNumber){
+		boolean success = adminDao.searchNumberQuery(searchAdminNumber);
+		
+		if(success){
+			AlertView alertView = new AlertView();
+			alertView.alert("관리자가 존재하지 않습니다.");
+		} else if(!success){
+			
+			this.requestUpdateAdmin(searchAdminNumber);
+		}
+		
+	}
 
 	//관리자 수정 번호 요청
 	public void requestUpdateAdminNumber() {

@@ -26,7 +26,6 @@ public class selectAllAdminView {
 			for(int i = 0; i < adminList.size(); i++) {
 				System.out.print(adminList.get(i).getAdminNumber() + "\t");
 				System.out.print(adminList.get(i).getAdminID() + "\t");
-				System.out.print(adminList.get(i).getAdminPassword() + "\t");
 				System.out.print(adminList.get(i).getAdminName() + "\t");
 				System.out.println(adminList.get(i).getAdminGrade());
 			}

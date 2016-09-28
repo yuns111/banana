@@ -5,7 +5,10 @@ public class Main {
 	public static void main(String[] args) {
 	
 		new Controllers();
-		Controllers.getAdminController().menuViewToInsertView();
+		Controllers.getAdminController().requestSelectAllAdmin();
+		Controllers.getAdminController().requestDelete();
+		Controllers.getAdminController().requestUpdateAdminNumber();
+		Controllers.getAdminController().menuViewToInsertView(); // insert
 		
 		
 	}
