@@ -9,13 +9,7 @@ import banana_admin.view.UserInfoView;
 
 public class UserController {
 
-	private UserDao userDao;
-<<<<<<< HEAD
-	private int number; 
-	User user = new User(); 
-
-=======
->>>>>>> refs/remotes/origin/master
+	private UserDao userDao; 
 
 	public UserController() {
 
@@ -68,11 +62,7 @@ public class UserController {
 		}
 
 	}
-
-<<<<<<< HEAD
-	public void requestDeleteUser() {
-		
-=======
+	
 	//삭제 요청
 	public void requestDeleteUser(){
 		SelectOneUserView selectOneUserView=new SelectOneUserView();
@@ -82,7 +72,6 @@ public class UserController {
 	//삭제 응답
 	public void responseDeleteUser(int number) {
 
->>>>>>> refs/remotes/origin/master
 		//dao
 		boolean success = userDao.deleteUser(number);
 
@@ -102,27 +91,7 @@ public class UserController {
 		infoView.printUserInfo(user);
 	}
 
-<<<<<<< HEAD
-	public void requestOneUser() {
-		SelectOneUserView selectOneView = new SelectOneUserView();	
-		selectOneView.selectOneUserView(userDao.selectOneUser(this.number));
-	}
-
-	public int requestReturnNumber() {
-		return this.number;
-	}
-
-	public void responseSelectReturnNumber(int number) {
-		this.number = number; 
-	}
-
-	public void requestResponseUser(User user) {
-		this.user=user;
-	}
-
-=======
 	//메뉴 요청
->>>>>>> refs/remotes/origin/master
 	public void requestMenu(){
 
 		UserInfoView userInfoView = new UserInfoView();

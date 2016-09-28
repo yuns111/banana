@@ -16,7 +16,6 @@ public class UserDao {
 	}
 
 
-
 	//회원 수정 Dao 메서드
 	public boolean updateUserInfo(User user) {
 

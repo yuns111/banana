@@ -34,11 +34,6 @@ public class UserInfoView {
 
 	public void menu() {
 		
-<<<<<<< HEAD
-		SelectOneUserView sel = new SelectOneUserView();
-		
-=======
->>>>>>> refs/remotes/origin/master
 		while(true) {
 
 			System.out.print("[1]회원정보조회  [2]회원정보수정  [3]회원강제탈퇴  [0]메뉴로 돌아가기] : ");
