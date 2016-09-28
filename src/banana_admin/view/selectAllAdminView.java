@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 import banana_admin.domain.Admin;
 
-public class selectAllAdminView {
+public class SelectAllAdminView {
 	
 	private Scanner keyboard;
 	
-	public selectAllAdminView() {
+	public SelectAllAdminView() {
 		
 		keyboard = new Scanner(System.in);
 		
