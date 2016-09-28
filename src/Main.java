@@ -6,8 +6,12 @@ public class Main {
 
 
 		new Controllers();
+		System.out.println("관리자모드");
+		Controllers.getTicketController().goToTicketMenuView();
 		Controllers.getUserController().requestMenu();
 
+		Controllers.getMusicController().requestSelectAllMusic();
+		
 	}
-
+	
 }

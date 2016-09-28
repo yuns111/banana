@@ -9,7 +9,7 @@ import banana_admin.view.UserInfoView;
 
 public class UserController {
 
-	private UserDao userDao;
+	private UserDao userDao; 
 
 	public UserController() {
 
@@ -62,7 +62,7 @@ public class UserController {
 		}
 
 	}
-
+	
 	//삭제 요청
 	public void requestDeleteUser(){
 		SelectOneUserView selectOneUserView=new SelectOneUserView();
@@ -85,13 +85,10 @@ public class UserController {
 
 	}
 
-	public void requestAllUser(){
-
-		ArrayList<User> user=userDao.AllUserList();
-
-		UserInfoView infoView=new UserInfoView();
+	public void requestAllUser() {
+		ArrayList<User> user = userDao.AllUserList();
+		UserInfoView infoView = new UserInfoView();
 		infoView.printUserInfo(user);
-
 	}
 
 	//메뉴 요청

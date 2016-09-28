@@ -1,8 +1,5 @@
 package banana_admin.view;
 import java.util.Scanner;
-
-import javax.swing.plaf.synth.SynthScrollBarUI;
-
 import banana_admin.controller.Controllers;
 import banana_admin.domain.User;
 
