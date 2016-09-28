@@ -3,26 +3,27 @@ package banana_admin.controller;
 public class Controllers {
 
 	private static ProgramController programController;
-<<<<<<< HEAD
 	private static AdminController adminController;
-	
-=======
+	private static TicketController ticketController;
 	private static EmotionController emotionController;
 	private static UserController userController;
-	private static AdminController adminController;
->>>>>>> refs/remotes/yuns111/master
 	
 	public Controllers() {
 
+		ticketController = new TicketController();
 		programController = new ProgramController();
-<<<<<<< HEAD
-=======
-		userController=new UserController();
+		userController = new UserController();
 		emotionController = new EmotionController();
->>>>>>> refs/remotes/yuns111/master
 		adminController = new AdminController();
 		
 	}
+
+	
+	
+	public static TicketController getTicketController() {
+		return ticketController;
+	}
+
 
 	public static ProgramController getProgramController() {
 
@@ -44,10 +45,5 @@ public class Controllers {
 		return adminController;
 	}
 
-	public static AdminController getAdminController() {
-		return adminController;
-	}
-	
-	
 
 }
