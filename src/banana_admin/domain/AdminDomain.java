@@ -18,11 +18,34 @@ public class AdminDomain {
 	int adminGrade;
 	
 	public AdminDomain(String adminID, String adminPassword, String adminName) {
-		super();
 		this.adminID = adminID;
 		this.adminPassword = adminPassword;
 		this.adminName = adminName;
 	}
+	
+	
+
+	public AdminDomain(int adminNumber, String adminID, String adminPassword, String adminName, int adminGrade) {
+		this.adminNumber = adminNumber;
+		this.adminID = adminID;
+		this.adminPassword = adminPassword;
+		this.adminName = adminName;
+		this.adminGrade = adminGrade;
+	}
+
+
+
+	public int getAdminNumber() {
+		return adminNumber;
+	}
+
+
+
+	public int getAdminGrade() {
+		return adminGrade;
+	}
+
+
 
 	public String getAdminID() {
 		return adminID;
