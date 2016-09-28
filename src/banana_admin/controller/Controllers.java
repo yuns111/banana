@@ -7,17 +7,25 @@ public class Controllers {
 	private static TicketController ticketController;
 	private static EmotionController emotionController;
 	private static UserController userController;
+<<<<<<< HEAD
+=======
+	private static MusicController musicController;
+	private static AdminController adminController;
+>>>>>>> refs/remotes/yuns111/master
 	private static LoginController loginController;
-	
+
 	public Controllers() {
 
 		ticketController = new TicketController();
 		programController = new ProgramController();
 		userController = new UserController();
+<<<<<<< HEAD
+=======
+		musicController = new MusicController();
+>>>>>>> refs/remotes/yuns111/master
 		emotionController = new EmotionController();
 		adminController = new AdminController();
 		loginController = new LoginController();
-		
 	}
 
 	
@@ -33,21 +41,27 @@ public class Controllers {
 	}
 
 	public static UserController getUserController() {
-		
+
 		return userController;
 	}
 
 	public static EmotionController getEmotionController() {
-		
+
 		return emotionController;
 	}
 
-	public static AdminController getAdminController() {
+	public static MusicController getMusicController() {
 		
+		return musicController;
+	}
+	
+	public static AdminController getAdminController() {
+
 		return adminController;
 	}
 
 	public static LoginController getLoginController() {
+		
 		return loginController;
 	}
 

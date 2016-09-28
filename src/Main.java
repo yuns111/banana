@@ -10,6 +10,8 @@ public class Main {
 		Controllers.getTicketController().goToTicketMenuView();
 		Controllers.getUserController().requestMenu();
 
+		Controllers.getMusicController().requestSelectAllMusic();
+		
 	}
-
+	
 }
