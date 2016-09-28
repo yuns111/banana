@@ -8,6 +8,8 @@ public class Main {
 		new Controllers();
 		Controllers.getUserController().requestMenu();
 
+		Controllers.getMusicController().requestSelectAllMusic();
+		
 	}
-
+	
 }

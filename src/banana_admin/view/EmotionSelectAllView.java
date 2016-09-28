@@ -10,7 +10,6 @@ import banana_admin.domain.Emotion;
 public class EmotionSelectAllView {
 
 	private Scanner keyboard;
-
 	public EmotionSelectAllView() {
 
 		keyboard = new Scanner(System.in);
