@@ -6,6 +6,7 @@ public class Controllers {
 	private static EmotionController emotionController;
 	private static UserController userController;
 	private static AdminController adminController;
+	private static LoginController loginController;
 	
 	public Controllers() {
 
@@ -13,6 +14,7 @@ public class Controllers {
 		userController=new UserController();
 		emotionController = new EmotionController();
 		adminController = new AdminController();
+		loginController = new LoginController();
 		
 	}
 
@@ -34,6 +36,10 @@ public class Controllers {
 	public static AdminController getAdminController() {
 		
 		return adminController;
+	}
+
+	public static LoginController getLoginController() {
+		return loginController;
 	}
 
 }
