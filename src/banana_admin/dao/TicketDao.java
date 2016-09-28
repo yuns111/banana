@@ -151,12 +151,14 @@ public class TicketDao {
 
 		try {
 
-			String sql = "update ticket set ticketname = ?, price = ?, expirationdate = ?, ticketcomment = ?";
+			String sql = "update ticket set ticketname = ?, price = ?, expirationdate = ?, ticketcomment = ?"
+					+ "where ticketnumber = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, ticketInfo.getTicketName());
 			pstmt.setInt(2, ticketInfo.getPrice());
 			pstmt.setInt(3, ticketInfo.getExpirationDate());
 			pstmt.setString(4, ticketInfo.getTicketComment());
+			pstmt.setInt(5, ticketInfo.getTicketNumber());
 			result = pstmt.executeUpdate();
 
 			if(result != 0){
