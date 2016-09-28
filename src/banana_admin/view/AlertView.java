@@ -1,11 +1,15 @@
 package banana_admin.view;
 
+import java.util.Scanner;
+
 public class AlertView {
 
-	public void alert(String message) {
-
-		System.out.println("[알림] " + message);
-
+	public AlertView() {
+		
 	}
-
+	public void alert(String message){
+		
+		System.out.println("[알림] " + message);
+		
+	}
 }
