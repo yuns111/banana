@@ -5,11 +5,11 @@ import java.util.Scanner;
 import banana_admin.controller.Controllers;
 import banana_admin.domain.Admin;
 
-public class updateAdminView {
+public class UpdateAdminView {
 
 	private Scanner keyboard;
 
-	public updateAdminView() {
+	public UpdateAdminView() {
 
 		keyboard = new Scanner(System.in);
 

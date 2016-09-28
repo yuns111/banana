@@ -1,6 +1,5 @@
 package banana_admin.controller;
 import java.util.ArrayList;
-
 import banana_admin.dao.UserDao;
 import banana_admin.domain.User;
 import banana_admin.view.AlertView;
@@ -11,9 +10,6 @@ import banana_admin.view.UserInfoView;
 public class UserController {
 
 	private UserDao userDao;
-	private int number; 
-	User user=new User(); 
-
 
 	public UserController() {
 
@@ -21,31 +17,63 @@ public class UserController {
 
 	}
 
-	public void requestUpdateUserInfo() {
+	//조회 요청
+	public void requestOneUser(){
 
-		UserInfoUpdateView userInfoUpdateView = new UserInfoUpdateView();
-		userInfoUpdateView.willUpdateUser(this.number);
+		SelectOneUserView selectOneView=new SelectOneUserView();	
+		selectOneView.selectOneView();
 
-		//Dao 통해 수정
+	}
+
+	//조회 응답
+	public void responseOneUser(int number){
+
+		//dao에가서 해당 번호 유저 정보를 받아와
+		User user = userDao.selectOneUser(number);
+
+		//view에 가서 그 정보를 출력하는 것
+		SelectOneUserView selectOneView=new SelectOneUserView();	
+		selectOneView.selectOneUserView(user);
+	}
+
+	//수정 요청
+	public void requestUpdateUserInfo(){
+		
+		UserInfoUpdateView userInfoUpdateView=new UserInfoUpdateView();
+		userInfoUpdateView.selectUpdateView();
+	}
+
+	//수정 응답
+	public void responseUpdateUserInfo(int number) {
+
+		UserInfoUpdateView userInfoUpdateView=new UserInfoUpdateView();
+		userInfoUpdateView.willUpdateUser(number);
+
+	}
+
+	public void requestResponseUser(User user){
 		boolean success =userDao.updateUserInfo(user);
 
 		AlertView alertView = new AlertView();
 		if(success) {
-			alertView.alert("회원삭제 성공");
+			alertView.alert("회원수정 성공");
 		} else {
-			alertView.alert("회원삭제 실패");
+			alertView.alert("회원수정 실패");
 		}
-
-
-		//관리자메뉴로가...
 
 	}
 
-	public void requestDeleteUser() {
+	//삭제 요청
+	public void requestDeleteUser(){
+		SelectOneUserView selectOneUserView=new SelectOneUserView();
+		selectOneUserView.selectDeleteView();
+	}
 
+	//삭제 응답
+	public void responseDeleteUser(int number) {
 
 		//dao
-		boolean success = userDao.deleteUser(this.number);
+		boolean success = userDao.deleteUser(number);
 
 		AlertView alertView = new AlertView();
 
@@ -54,8 +82,6 @@ public class UserController {
 		} else {
 			alertView.alert("회원삭제 실패");
 		}
-
-		//관리자 메뉴로가기
 
 	}
 
@@ -68,28 +94,7 @@ public class UserController {
 
 	}
 
-	public void requestOneUser(){
-
-		SelectOneUserView selectOneView=new SelectOneUserView();	
-		selectOneView.selectOneUserView(userDao.selectOneUser(this.number));
-
-	}
-
-	public int requestReturnNumber(){
-
-		return this.number;
-
-	}
-
-	public void responseSelectReturnNumber(int number){
-
-		this.number = number; 
-	}
-
-	public void requestResponseUser(User user){
-		this.user=user;
-	}
-
+	//메뉴 요청
 	public void requestMenu(){
 
 		UserInfoView userInfoView = new UserInfoView();

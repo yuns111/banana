@@ -7,6 +7,11 @@ public class Controllers {
 	private static TicketController ticketController;
 	private static EmotionController emotionController;
 	private static UserController userController;
+<<<<<<< HEAD
+=======
+	private static AdminController adminController;
+	private static LoginController loginController;
+>>>>>>> refs/remotes/yuns111/master
 	
 	public Controllers() {
 
@@ -15,6 +20,7 @@ public class Controllers {
 		userController = new UserController();
 		emotionController = new EmotionController();
 		adminController = new AdminController();
+		loginController = new LoginController();
 		
 	}
 
@@ -45,5 +51,11 @@ public class Controllers {
 		return adminController;
 	}
 
+<<<<<<< HEAD
+=======
+	public static LoginController getLoginController() {
+		return loginController;
+	}
+>>>>>>> refs/remotes/yuns111/master
 
 }
