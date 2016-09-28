@@ -34,10 +34,7 @@ public class UserInfoView {
 
 	public void menu() {
 		
-		SelectOneUserView sel=new SelectOneUserView();
-		
 		while(true) {
-
 
 			System.out.print("[1]회원정보조회  [2]회원정보수정  [3]회원강제탈퇴  [0]메뉴로 돌아가기] : ");
 
@@ -45,23 +42,15 @@ public class UserInfoView {
 
 			switch (selectedMenu) {
 			case 1:
-				new AlertView().alert("유저 컨트롤러에 회원정보조회를 요청함."); 
-				sel.selectOneView();
 				Controllers.getUserController().requestOneUser();
 				break;
 			case 2:
-				new AlertView().alert("유저 컨트롤러에 회원정보수정을 요청함.");
-				sel.selectOneView();
 				Controllers.getUserController().requestUpdateUserInfo();
 				break;
 			case 3:
-				new AlertView().alert("유저 컨트롤러에 회원탈퇴를 요청함.");
-				sel.selectOneView();
 				Controllers.getUserController().requestDeleteUser();
 				break;
 			case 0:
-				new AlertView().alert("관리자 컨트롤러에 관리자 메뉴를 요청함.");
-				
 				break;
 
 			default:
