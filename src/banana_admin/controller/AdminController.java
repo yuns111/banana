@@ -7,9 +7,9 @@ import banana_admin.domain.Admin;
 import banana_admin.view.AlertView;
 import banana_admin.view.InsertAdminView;
 import banana_admin.view.MenuAdminView;
-import banana_admin.view.deleteAdminView;
-import banana_admin.view.selectAllAdminView;
-import banana_admin.view.updateAdminView;
+import banana_admin.view.DeleteAdminView;
+import banana_admin.view.SelectAllAdminView;
+import banana_admin.view.UpdateAdminView;
 
 public class AdminController {
 
@@ -56,7 +56,7 @@ public class AdminController {
 
 		ArrayList<Admin> adminSelectAll = adminDao.adminSelectAll();
 
-		selectAllAdminView adminSelectAllView = new selectAllAdminView();
+		SelectAllAdminView adminSelectAllView = new SelectAllAdminView();
 		adminSelectAllView.adminSelectAll(adminSelectAll);
 
 	}
@@ -78,7 +78,7 @@ public class AdminController {
 	public void requestUpdateAdminNumber() {
 
 		//관리자번호 입력받는 화면
-		updateAdminView adminUpdateView = new updateAdminView();
+		UpdateAdminView adminUpdateView = new UpdateAdminView();
 		adminUpdateView.searchUpdateAdminNumber();
 
 	}
@@ -87,7 +87,7 @@ public class AdminController {
 	public void requestUpdateAdmin(int adminNumber) {
 
 		//수정 입력받는 화면
-		updateAdminView adminUpdateView = new updateAdminView();
+		UpdateAdminView adminUpdateView = new UpdateAdminView();
 		adminUpdateView.adminUpdateInfo(adminNumber);
 
 	}
@@ -109,7 +109,7 @@ public class AdminController {
 	//관리자 삭제
 	public void requestDelete() {
 
-		deleteAdminView adminDeleteView = new deleteAdminView();
+		DeleteAdminView adminDeleteView = new DeleteAdminView();
 
 		int searchDeleteAdminNumber = adminDeleteView.searchDeleteAdminNumber();
 
