@@ -6,7 +6,6 @@ import banana_admin.dao.TicketDao;
 import banana_admin.domain.Ticket;
 import banana_admin.view.AlertView;
 import banana_admin.view.TicketMenuView;
-import javafx.scene.control.Alert;
 
 public class TicketController {
 
