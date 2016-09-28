@@ -12,7 +12,7 @@ public class UserController {
 
 	private UserDao userDao;
 	private int number; 
-	User user=new User(); 
+	User user = new User(); 
 
 
 	public UserController() {
@@ -36,14 +36,10 @@ public class UserController {
 			alertView.alert("회원삭제 실패");
 		}
 
-
-		//관리자메뉴로가...
-
 	}
 
 	public void requestDeleteUser() {
-
-
+		
 		//dao
 		boolean success = userDao.deleteUser(this.number);
 
@@ -55,38 +51,28 @@ public class UserController {
 			alertView.alert("회원삭제 실패");
 		}
 
-		//관리자 메뉴로가기
-
 	}
 
-	public void requestAllUser(){
-
-		ArrayList<User> user=userDao.AllUserList();
-
-		UserInfoView infoView=new UserInfoView();
+	public void requestAllUser() {
+		ArrayList<User> user = userDao.AllUserList();
+		UserInfoView infoView = new UserInfoView();
 		infoView.printUserInfo(user);
-
 	}
 
-	public void requestOneUser(){
-
-		SelectOneUserView selectOneView=new SelectOneUserView();	
+	public void requestOneUser() {
+		SelectOneUserView selectOneView = new SelectOneUserView();	
 		selectOneView.selectOneUserView(userDao.selectOneUser(this.number));
-
 	}
 
-	public int requestReturnNumber(){
-
+	public int requestReturnNumber() {
 		return this.number;
-
 	}
 
-	public void responseSelectReturnNumber(int number){
-
+	public void responseSelectReturnNumber(int number) {
 		this.number = number; 
 	}
 
-	public void requestResponseUser(User user){
+	public void requestResponseUser(User user) {
 		this.user=user;
 	}
 

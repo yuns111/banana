@@ -34,7 +34,7 @@ public class UserInfoView {
 
 	public void menu() {
 		
-		SelectOneUserView sel=new SelectOneUserView();
+		SelectOneUserView sel = new SelectOneUserView();
 		
 		while(true) {
 
