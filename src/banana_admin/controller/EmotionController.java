@@ -38,6 +38,8 @@ public class EmotionController {
 		} else {
 			new AlertView().alert("감정등록실패");
 		}
+
+		Controllers.getEmotionController().requestSelectAllEmotion();
 	}
 
 	public void requestSelectOneEmotion(int select){
@@ -63,20 +65,24 @@ public class EmotionController {
 		} else {
 			new AlertView().alert("감정수정실패");
 		}
+
+		Controllers.getEmotionController().requestSelectAllEmotion();
 	}
 
 	//감정 삭제
 	public void requestdeleteEmotion(int deleteNumber){
-		
+
 		//감정삭제 dao 호출
 		boolean success = emotionDao.deleteEmotion(deleteNumber);
-		
+
 		if(success){
 			new AlertView().alert("감정삭제성공");
 		} else {
 			new AlertView().alert("감정삭제실패");
 		}
-		
+
+		Controllers.getEmotionController().requestSelectAllEmotion();
+
 	}
 
 	//감정 리스트
@@ -91,13 +97,13 @@ public class EmotionController {
 		selectAllView.EmotionSelectAll(emotions);
 
 	}
-	
+
 	//감정메뉴 호출 컨트롤러
 	public void gotoEmotionMenu(){
-		
+
 		EmotionSelectAllView emotionMenu = new EmotionSelectAllView();
 		emotionMenu.menu();
-		
+
 	}
 
 }

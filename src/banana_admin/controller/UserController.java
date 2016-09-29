@@ -74,7 +74,7 @@ public class UserController {
 
 		//dao
 		boolean success = userDao.deleteUser(number);
-
+		
 		AlertView alertView = new AlertView();
 
 		if(success) {
@@ -88,6 +88,7 @@ public class UserController {
 	public void requestAllUser() {
 		
 		ArrayList<User> user = userDao.AllUserList();
+		
 		UserInfoView infoView = new UserInfoView();
 		infoView.printUserInfo(user);
 	}

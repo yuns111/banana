@@ -64,7 +64,8 @@ public class UserDao {
 
 			if(result != 0) {
 				success = true;
-			}			
+			}	
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

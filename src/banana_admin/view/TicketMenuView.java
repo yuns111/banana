@@ -22,7 +22,7 @@ public class TicketMenuView {
 
 		while(true){
 
-			System.out.println("[이용권관리모드]");
+			System.out.println("\n[이용권관리모드]");
 			System.out.print("[1.이용권 등록 2.이용권 수정 3.이용권 삭제 0.이전메뉴] : ");
 			int choiceTicketMenu = 0;
 
@@ -62,7 +62,7 @@ public class TicketMenuView {
 
 	public void ticketList(ArrayList<Ticket> ticketInfos){
 
-		System.out.println("이용권 번호\t이용권명\t\t이용권 가격\t이용권 기한\t이용권 설명");
+		System.out.println("\n번호\t이용권명\t\t이용권 가격\t이용권 기한\t이용권 설명");
 
 		for(int i = 0; i< ticketInfos.size();i++){
 			System.out.print(ticketInfos.get(i).getTicketNumber() + "\t");
@@ -80,7 +80,7 @@ public class TicketMenuView {
 	public void ticketRegisterMenu(){
 
 
-		System.out.println("[이용권 등록]");
+		System.out.println("\n[이용권 등록]");
 		System.out.print("1.이용권명 : ");
 		String ticketName = keyboard.next();
 		System.out.print("2.이용권 가격 : ");
@@ -127,7 +127,7 @@ public class TicketMenuView {
 	public void ticketDeleteMenu(){
 
 
-		System.out.println("[이용권 삭제]");
+		System.out.println("\n[이용권 삭제]");
 		System.out.print("이용권번호를 입력하세요 : ");
 
 		int inputTicketNumber = keyboard.nextInt();
@@ -138,7 +138,7 @@ public class TicketMenuView {
 			System.out.println("찾으시는 번호가 없습니다.");
 		} else {
 
-			System.out.println("정말 삭제하시겠습니까? y/press any key");
+			System.out.print("정말 삭제하시겠습니까?(y/press any key) : ");
 			char question = keyboard.next().charAt(0);
 
 			if(question == 'y'){
