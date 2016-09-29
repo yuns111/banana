@@ -22,13 +22,14 @@ public class LoginDao {
 
 		try{
 			//아이디랑 비밀번호 체크
-			String sql = "select USERPASSWORD from banana_user where userid =?";
+			String sql = "select ADMINPASSWORD from banana_admin where adminID = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, login.getLoginId());
 			rs = pstmt.executeQuery();
 
 			while(rs.next()){
-				userPassword =rs.getString(1);
+
+				userPassword = rs.getString(1);
 			}
 
 			if(userPassword.equals(login.getLoginPassword())){
@@ -44,15 +45,50 @@ public class LoginDao {
 
 		} finally{
 
-			try {
-				rs.close(); 
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if(pstmt != null) {
+				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
+
 		}
 
 		return success;
+	}
+
+	public int checkGrade(){
+
+		int grade = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try{
+			//아이디랑 비밀번호 체크
+			String sql = "select adminGrade from banana_admin where adminId = ?";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setString(1, LoginRepository.getLogin().getLoginId());
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+
+				grade = rs.getInt(1);
+			}
+
+		} catch(SQLException e){
+
+			System.out.println("SQL문장이 잘못되었습니다.");	
+
+		} finally{
+
+			if(pstmt != null) {
+				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
+
+		return grade;
 	}
 
 	public boolean delete(){
