@@ -1,6 +1,7 @@
 package banana_admin.view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
@@ -33,13 +34,21 @@ public class UserInfoView {
 	}
 
 	public void menu() {
-		
+
 		while(true) {
 
-			System.out.print("[1]회원정보조회  [2]회원정보수정  [3]회원강제탈퇴  [0]메뉴로 돌아가기] : ");
+			int selectedMenu = 0;
 
-			int selectedMenu = keyboard.nextInt();
+			System.out.println("[회원관리모드]");
+			System.out.print("[1.회원정보조회  2.회원정보수정  3.회원강제탈퇴  0.이전메뉴] : ");
 
+			try{
+				selectedMenu = keyboard.nextInt();
+			}
+			catch(InputMismatchException e){
+
+				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+			}
 			switch (selectedMenu) {
 			case 1:
 				Controllers.getUserController().requestOneUser();
@@ -51,10 +60,18 @@ public class UserInfoView {
 				Controllers.getUserController().requestDeleteUser();
 				break;
 			case 0:
+				if(Controllers.getLoginController().requestCheckMaster()){
+
+					Controllers.getAdminController().goToMAdminMenu();
+
+				} else {
+
+					Controllers.getAdminController().goToAdminMenu();
+				}
 				break;
 
 			default:
-				new AlertView().alert("메뉴를 다시 선택해 주세요.");
+				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
 			}
 		}
 

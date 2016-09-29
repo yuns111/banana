@@ -3,13 +3,11 @@ package banana_admin.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import banana_admin.controller.Controllers;
 import banana_admin.domain.Ticket;
 import banana_admin.view.AlertView;
-import javafx.scene.control.Alert;
 
 public class TicketDao {
 
@@ -79,7 +77,7 @@ public class TicketDao {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from ticket";
+			String sql = "select * from ticket order by ticketNumber";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			rs = pstmt.executeQuery();
 

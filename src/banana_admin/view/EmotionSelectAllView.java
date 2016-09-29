@@ -14,6 +14,7 @@ public class EmotionSelectAllView {
 
 		keyboard = new Scanner(System.in);
 	}
+	
 
 	public void EmotionSelectAll(ArrayList<Emotion> emotions){
 
@@ -22,7 +23,7 @@ public class EmotionSelectAllView {
 			System.out.println("등록된 감정이 없습니다.");
 		} else {
 
-			System.out.println("[번호]\t[감정명]");
+			System.out.println("번호\t감정명");
 			for(int i=0; i<emotions.size(); i++){
 
 				System.out.println(emotions.get(i).getEmotionNumber()+"\t"
@@ -30,37 +31,50 @@ public class EmotionSelectAllView {
 			}
 		}
 
-		this.menu();
+		Controllers.getEmotionController().gotoEmotionMenu();
 	}
 
 	public void menu(){
 
 		int selectedNumber = 0;
-		System.out.println("[1.감정 등록  2.감정명 수정  3.감정 삭제]");
 		
-		try{
-			selectedNumber = keyboard.nextInt();
-		}
-		catch(InputMismatchException e){
-			
-		}
-		switch(selectedNumber){
-		case 1 :
-			Controllers.getEmotionController().requestRegisterEmotionView();
-			break;
-		case 2 :
-			Controllers.getEmotionController().requestSelectOneEmotion(1);
-			break;
-		case 3 : 
-			Controllers.getEmotionController().requestSelectOneEmotion(2);
-			break;
-		default :
-			System.out.println("잘못입력하셨습니다.");
-			break;
-		}
+		while(true){
 
+			System.out.println("[감정관리모드]");
+			System.out.print("[1.감정 등록  2.감정명 수정  3.감정 삭제 0.이전메뉴] : ");
 
+			try{
+				selectedNumber = keyboard.nextInt();
+			}
+			catch(InputMismatchException e){
+				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+			}
 
+			switch(selectedNumber){
+			case 1 :
+				Controllers.getEmotionController().requestRegisterEmotionView();
+				break;
+			case 2 :
+				Controllers.getEmotionController().requestSelectOneEmotion(1);
+				break;
+			case 3 : 
+				Controllers.getEmotionController().requestSelectOneEmotion(2);
+				break;
+			case 0 :
+				if(Controllers.getLoginController().requestCheckMaster()){
+
+					Controllers.getAdminController().goToMAdminMenu();
+
+				} else {
+
+					Controllers.getAdminController().goToAdminMenu();
+				}
+				break;
+			default :
+				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+				break;
+			}
+		}
 
 	}
 
