@@ -3,6 +3,7 @@ package banana_admin.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import banana_admin.controller.Controllers;
 import banana_admin.domain.Admin;
 
 public class SelectAllAdminView {
@@ -31,6 +32,7 @@ public class SelectAllAdminView {
          }
       }
       
+      Controllers.getAdminController().goToMAdminManage();
    }
    
 }

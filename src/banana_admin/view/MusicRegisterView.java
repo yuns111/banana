@@ -1,9 +1,11 @@
 package banana_admin.view;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
+import banana_admin.domain.Emotion;
 import banana_admin.domain.Music;
 
 
@@ -17,14 +19,12 @@ public class MusicRegisterView {
 
 	}
 
-
-	public void musicRegister() {
+	public void musicRegister(ArrayList<Emotion> emotions) {
 
 		String title = null;
 		String singer = null;
 		String lyrics = null;
 		int emotionNumber = 0;
-		int playingCount = 0;
 
 		boolean exit = true;
 
@@ -43,7 +43,11 @@ public class MusicRegisterView {
 				lyrics = keyboard.next();
 
 				System.out.print("감정번호 : ");
-				System.out.println("1.? 2.? 3.? 4.?");
+				
+				for(int i=0; i< emotions.size(); i++){
+					System.out.print((i+1)+"."+emotions.get(i).getEmotionName()+"  ");
+				}
+				System.out.println("");
 				emotionNumber = keyboard.nextInt();
 
 				exit = false;
