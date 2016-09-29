@@ -1,6 +1,9 @@
 package banana_admin.controller;
 
+import java.util.ArrayList;
+
 import banana_admin.dao.StatsDao;
+import banana_admin.domain.Stats;
 import banana_admin.view.StatsView;
 
 public class StatsController {
@@ -15,12 +18,14 @@ public class StatsController {
 	public void requestStatsAnalysis(){
 
 		//dao에서 조회: 일별 매출액
-		String daySalesMoney = statsDao.statsDaySalesMoney();
-		String sexMusicPattern = statsDao.statsSexMusicPattern();
+		ArrayList<Stats> daySumPrice = statsDao.statsDaySalesMoney();
+		
+		//DAO : 성별 음악 패턴
+		ArrayList<Stats> genderPattern = statsDao.statsGenderMusicPattern();
 
 		//view
 		StatsView statsView = new StatsView();
-		statsView.statsAnalysisView(daySalesMoney, sexMusicPattern);
+		statsView.statsAnalysisView(daySumPrice, genderPattern);
 
 	}
 

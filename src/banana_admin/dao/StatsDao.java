@@ -2,8 +2,10 @@ package banana_admin.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import banana_admin.controller.Controllers;
+import banana_admin.domain.Stats;
 
 public class StatsDao {
 
@@ -11,48 +13,70 @@ public class StatsDao {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String statsDaySalesMoney(){
+	public ArrayList<Stats> statsDaySalesMoney(){
 
-		String daySalesMoney = null;
+		String day = null;
+		String daySumPrice = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ArrayList<Stats> Statss = new ArrayList<Stats>();
 
 		try {
-			String sql = "";
-			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			if(rs.next()){
-				daySalesMoney = rs.getString(1);
-			}
-		} catch(SQLException e){
-			System.out.println();
-		}
-
-
-		return daySalesMoney;
-	}
-
-	public String statsSexMusicPattern(){
-
-		String sexMusicPattern = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			String sql = "";
+			String sql = "SELECT STARTDATE , SUM(PRICE) FROM PURCHASETICKET GROUP BY STARTDATE ORDER BY STARTDATE";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			while(rs.next()){
-				sexMusicPattern = rs.getString(1);
+				day = rs.getString(1);
+				daySumPrice = rs.getString(2);			
+				Stats st = new Stats(day,daySumPrice);
+				Statss.add(st);
 			}
+
 		} catch(SQLException e){
 			System.out.println();
 		}
 
+		return Statss;
+	}
 
-		return sexMusicPattern;
+
+	public ArrayList<Stats> statsGenderMusicPattern(){
+
+		String emotionName = null;
+		int rank = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Stats> Statss = new ArrayList<Stats>();
+
+		try {
+			String sqlM = "SELECT RANK() OVER (order by pattern.emotionCount desc) rank,e.EMOTIONNAME from pattern, emotion e where pattern.USERGENDER = 'M' and pattern.EMOTIONNUMBER = e.EMOTIONNUMBER";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sqlM);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				rank = rs.getInt(1);
+				emotionName = rs.getString(2);
+				Stats st = new Stats("남성",emotionName, rank);
+				Statss.add(st);
+			}
+			
+			String sqlF = "SELECT RANK() OVER (order by pattern.emotionCount desc) rank,e.EMOTIONNAME from pattern, emotion e where pattern.USERGENDER = 'F' and pattern.EMOTIONNUMBER = e.EMOTIONNUMBER";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sqlF);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				rank = rs.getInt(1);
+				emotionName = rs.getString(2);
+				Stats st = new Stats("여성",emotionName, rank);
+				Statss.add(st);
+			}
+			
+		} catch(SQLException e){
+			System.out.println();
+		}
+
+		return Statss;
 	}
 
 }

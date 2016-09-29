@@ -15,12 +15,12 @@ public class AdminMenuView {
 	}
 
 	public void adminMenuView(){
-		
+
 		while(true){
 			System.out.println("[관리자 메뉴]");
 			System.out.print("[1.로그인 2.프로그램 종료] : ");
 			int choiceAdminMenu = 0;
-			
+
 			try{
 
 				choiceAdminMenu= keyboard.nextInt();
@@ -76,7 +76,7 @@ public class AdminMenuView {
 
 				} else if(choiceSubAdminMenu == 6){
 
-					//구현예정
+					Controllers.getStatsController().requestStatsAnalysis();
 
 				}  else if(choiceSubAdminMenu == 0){
 
@@ -122,7 +122,7 @@ public class AdminMenuView {
 
 				} else if(choiceSubAdminMenu == 5){
 
-					//구현예정
+					Controllers.getStatsController().requestStatsAnalysis();
 
 				} else if(choiceSubAdminMenu == 0){
 
