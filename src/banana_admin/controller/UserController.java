@@ -86,6 +86,7 @@ public class UserController {
 	}
 
 	public void requestAllUser() {
+		
 		ArrayList<User> user = userDao.AllUserList();
 		UserInfoView infoView = new UserInfoView();
 		infoView.printUserInfo(user);

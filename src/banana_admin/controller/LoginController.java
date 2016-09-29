@@ -17,7 +17,7 @@ public class LoginController {
 
 		//view
 		LoginView loginView = new LoginView();
-		loginView.LoginView();
+		loginView.loginView();
 
 	}
 
@@ -30,6 +30,13 @@ public class LoginController {
 
 		if(success){
 			alertView.alert("로그인을 성공했습니다.");
+			
+			if(loginDao.checkGrade()==1){
+				Controllers.getAdminController().goToMAdminMenu();
+			}else {
+				Controllers.getAdminController().goToAdminMenu();
+			}
+			
 		} else{
 			alertView.alert("id 또는 password가 틀렸습니다.");
 			Controllers.getLoginController().requestLogin();
@@ -46,6 +53,19 @@ public class LoginController {
 		if(success){
 			alertView.alert("로그아웃을 성공했습니다.");
 		} 
+	}
+	
+	public boolean requestCheckMaster(){
+		//참이면 master 거짓이면 그냥 admin
+		
+		boolean success = false;
+		
+		if(loginDao.checkGrade()==1){
+			success = true;
+		}
+		
+		return success;
+		
 	}
 
 }
