@@ -15,11 +15,12 @@ public class AdminMenuView {
 	}
 
 	public void adminMenuView(){
-		//차트 뜨기.
+		
 		while(true){
 			System.out.println("[관리자 메뉴]");
 			System.out.print("[1.로그인 2.프로그램 종료] : ");
 			int choiceAdminMenu = 0;
+			
 			try{
 
 				choiceAdminMenu= keyboard.nextInt();
