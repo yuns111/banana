@@ -2,6 +2,8 @@ package banana_admin.view;
 
 import java.util.Scanner;
 
+import banana_admin.controller.Controllers;
+
 public class DeleteAdminView {
 	
 	private Scanner keyboard;
@@ -12,7 +14,7 @@ public class DeleteAdminView {
 		
 	}
 
-	public int searchDeleteAdminNumber() {
+	public void searchDeleteAdminNumber() {
 		
 		int searchDeleteAdminNumber = 0;
 		
@@ -20,8 +22,7 @@ public class DeleteAdminView {
 		System.out.print("관리자 번호 : ");
 		searchDeleteAdminNumber = keyboard.nextInt();
 		
-		return searchDeleteAdminNumber;
-		
+		Controllers.getAdminController().requestDeleteAdmin(searchDeleteAdminNumber);
 	}
 	
 }

@@ -44,7 +44,7 @@ public class MusicController {
 
 		//음원 등록에 필요한 정보를 취득하는 뷰
 		MusicRegisterView musicRegisterView = new MusicRegisterView();
-		musicRegisterView.musicRegister();
+		musicRegisterView.musicRegister(Controllers.getEmotionController().emotionDao.selectAllEmotion());
 
 	}
 

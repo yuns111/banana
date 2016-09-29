@@ -17,15 +17,12 @@ public class TicketController {
 	}
 
 	public void goToTicketMenuView(){
+
 		TicketMenuView ticketMenuView = new TicketMenuView();
 		ticketMenuView.ticketMenu();
+
 	}
-	
-	public void goToTicketList(){
-		TicketMenuView ticketMenuView = new TicketMenuView();
-		ticketMenuView.ticketList();
-	}
-	
+
 	public void requestTicketRegister(Ticket ticketInfo){
 
 		//다오로 정보 전달
@@ -39,33 +36,59 @@ public class TicketController {
 		}
 	}
 
-	public ArrayList<Ticket> requestTicketList(){
+	public void requestTicketList(){
 
 		ArrayList<Ticket> ticketInfos = ticketDao.ticketList();
 
-		return ticketInfos;
+		TicketMenuView ticketList = new TicketMenuView();
+
+		ticketList.ticketList(ticketInfos);
 	}
-	
+
 	public boolean requestCheckNumber(int inputTicketNumber){
+
 		boolean canMake= ticketDao.checkTicketNumber(inputTicketNumber);
 
-			return canMake;
+		return canMake;
 	}
-	
+
 	public void requestUpdateTicket(Ticket ticketInfo){
 
 		boolean success = ticketDao.updateTicket(ticketInfo);
-		
+
 		if(success){
 			System.out.println("정보 수정이 성공적으로 이루어졌습니다.");
 		} else {
 			System.out.println("정보 수정에 실패하였습니다.");
 		}
+		
 	}
 
 	public boolean requestDeleteTicket(int inputTicketNumber){
-		boolean success = ticketDao.deleteTicket(inputTicketNumber);
 		
+		boolean success = ticketDao.deleteTicket(inputTicketNumber);
+
 		return success;
+	}
+
+	//이용권 등록 뷰 호출 컨트롤러
+	public void gotoTicketRegister(){
+
+		TicketMenuView ticketRegister = new TicketMenuView();
+		ticketRegister.ticketRegisterMenu();
+	}
+
+	//이용권 수정 뷰 호출 컨트롤러
+	public void gotoTicketUpdate(){
+
+		TicketMenuView ticketUpdate = new TicketMenuView();
+		ticketUpdate.ticketUpdateMenu();
+	}
+
+	//이용권 삭제 뷰 호출 컨트롤러
+	public void gotoTicketDelete(){
+
+		TicketMenuView ticketDelete = new TicketMenuView();
+		ticketDelete.ticketDeleteMenu();
 	}
 }

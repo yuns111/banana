@@ -91,5 +91,13 @@ public class EmotionController {
 		selectAllView.EmotionSelectAll(emotions);
 
 	}
+	
+	//감정메뉴 호출 컨트롤러
+	public void gotoEmotionMenu(){
+		
+		EmotionSelectAllView emotionMenu = new EmotionSelectAllView();
+		emotionMenu.menu();
+		
+	}
 
 }
