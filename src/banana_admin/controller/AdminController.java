@@ -26,7 +26,6 @@ public class AdminController {
 		AdminMenuView menuAdminView = new AdminMenuView();
 		menuAdminView.adminMenuView();
 
-
 	}
 
 	//M관리자 메뉴

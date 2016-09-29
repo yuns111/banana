@@ -9,6 +9,7 @@ public class Controllers {
 	private static MusicController musicController;
 	private static AdminController adminController;
 	private static LoginController loginController;
+	private static StatsController statsController;
 
 	public Controllers() {
 
@@ -19,9 +20,11 @@ public class Controllers {
 		emotionController = new EmotionController();
 		adminController = new AdminController();
 		loginController = new LoginController();
+		statsController = new StatsController();
 	}
 	
 	public static TicketController getTicketController() {
+		
 		return ticketController;
 	}
 
@@ -56,4 +59,10 @@ public class Controllers {
 		return loginController;
 	}
 
+	public static StatsController getStatsController() {
+		
+		return statsController;
+		
+	}
+		
 }
