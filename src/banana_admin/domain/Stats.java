@@ -3,12 +3,12 @@ package banana_admin.domain;
 public class Stats {
 	
 	private String day;
-	private String daySumPrice;
+	private int daySumPrice;
 	private String emotionName;
 	private int rank;
 	private String gender;
-	
-	public Stats(String day, String daySumPrice) {
+		
+	public Stats(String day, int daySumPrice) {
 		this.day = day;
 		this.daySumPrice = daySumPrice;
 	}
@@ -23,7 +23,7 @@ public class Stats {
 		return day;
 	}
 
-	public String getDaySumPrice() {
+	public int getDaySumPrice() {
 		return daySumPrice;
 	}
 
@@ -37,6 +37,6 @@ public class Stats {
 
 	public String getGender() {
 		return gender;
-	}	
-		
+	}
+
 }

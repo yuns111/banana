@@ -10,7 +10,7 @@ public class StatsView {
 
 	}
 
-	public void statsAnalysisView(ArrayList<Stats> daySumPrice, ArrayList<Stats> genderPattern){
+	public void statsAnalysisView(ArrayList<Stats> daySumPrice, ArrayList<Stats> genderPattern, int totalSumPrice){
 
 		System.out.println("\n[통계 내용]");
 		
@@ -21,6 +21,7 @@ public class StatsView {
 			System.out.print(daySumPrice.get(i).getDay()+"\t");
 			System.out.println(daySumPrice.get(i).getDaySumPrice());
 		}
+		System.out.println("총 매출액 : " + totalSumPrice);
 		
 		System.out.println("\n2. 성별 음악 패턴 ");
 		System.out.println("성별\t순위\t음악패턴");

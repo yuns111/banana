@@ -17,15 +17,18 @@ public class StatsController {
 
 	public void requestStatsAnalysis(){
 
-		//dao에서 조회: 일별 매출액
+		//일별 매출액
 		ArrayList<Stats> daySumPrice = statsDao.statsDaySalesMoney();
 		
-		//DAO : 성별 음악 패턴
+		//총 매출액
+		int totalSumPrice = statsDao.totalSumPrice();
+		
+		//성별 음악 패턴
 		ArrayList<Stats> genderPattern = statsDao.statsGenderMusicPattern();
 
 		//view
 		StatsView statsView = new StatsView();
-		statsView.statsAnalysisView(daySumPrice, genderPattern);
+		statsView.statsAnalysisView(daySumPrice, genderPattern,totalSumPrice);
 
 	}
 
