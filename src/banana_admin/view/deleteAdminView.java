@@ -22,15 +22,18 @@ public class DeleteAdminView {
 		System.out.println("\n[관리자 삭제 모드]");
 		System.out.print("관리자 번호 : ");
 
-		try {
+		while(true){
+			try {
 
-			searchDeleteAdminNumber= keyboard.nextInt();
+				searchDeleteAdminNumber = keyboard.nextInt();
+				break;
 
-		} catch (InputMismatchException e) {
+			} catch (InputMismatchException e) {
 
-			keyboard = new Scanner(System.in);
-			System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
 
+			} 
 		}
 
 		Controllers.getAdminController().requestDeleteAdmin(searchDeleteAdminNumber);
