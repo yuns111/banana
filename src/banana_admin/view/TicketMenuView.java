@@ -1,6 +1,7 @@
 package banana_admin.view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.sun.corba.se.impl.io.TypeMismatchException;
@@ -33,7 +34,7 @@ public class TicketMenuView {
 				
 			} catch (TypeMismatchException e) {
 				
-				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+				keyboard = new Scanner(System.in);
 				
 			}
 			
@@ -72,7 +73,7 @@ public class TicketMenuView {
 
 	public void ticketList(ArrayList<Ticket> ticketInfos) {
 
-		System.out.println("\n번호\t이용권명\t\t이용권 가격\t이용권 기한\t이용권 설명");
+		System.out.println("\n번호\t이용권명\t\t가격\t기한\t이용권 설명");
 
 		for(int i = 0; i < ticketInfos.size(); i++) {
 			
@@ -94,9 +95,41 @@ public class TicketMenuView {
 		System.out.print("1.이용권명 : ");
 		String ticketName = keyboard.next();
 		System.out.print("2.이용권 가격 : ");
-		int price = keyboard.nextInt();
+
+		int price = 0;
+		
+		while(true){
+			try {
+
+				price = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
+
 		System.out.print("3.이용권 기한 : ");
-		int expirationDate = keyboard.nextInt();
+		
+		int expirationDate = 0;
+		
+		while(true){
+			try {
+
+				expirationDate = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+				
+			} 
+		}
+		
 		System.out.print("4.이용권 설명 : ");
 		String ticketComment = keyboard.next();
 
@@ -108,9 +141,23 @@ public class TicketMenuView {
 
 	public void ticketUpdateMenu() {
 
-		System.out.println("[이용권 수정]");
-		System.out.println("이용권번호를 입력하세요.");
-		int inputTicketNumber = keyboard.nextInt();
+		System.out.println("\n[이용권 수정]");
+		System.out.print("이용권번호를 입력하세요 : ");
+		int inputTicketNumber = 0;
+		
+		while(true){
+			try {
+
+				inputTicketNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
 
 		boolean canMake = Controllers.getTicketController().requestCheckNumber(inputTicketNumber);
 
@@ -122,11 +169,41 @@ public class TicketMenuView {
 
 			System.out.print("1.이용권명 : ");
 			String ticketName = keyboard.next();
-			System.out.print("2.이용권 가격 : ");
-			int price = keyboard.nextInt();
+
+			int price = 0;
+			
+			while(true){
+				try {
+
+					price = keyboard.nextInt();
+					break;
+
+				} catch (InputMismatchException e) {
+
+					keyboard = new Scanner(System.in);
+					System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+				} 
+			}
+
 			System.out.print("3.이용권 기한 : ");
-			int expirationDate = keyboard.nextInt();
-			System.out.println("4.이용권 설명 : ");
+			
+			int expirationDate = 0;
+			
+			while(true){
+				try {
+
+					expirationDate = keyboard.nextInt();
+					break;
+
+				} catch (InputMismatchException e) {
+
+					keyboard = new Scanner(System.in);
+					System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+				} 
+			}
+			System.out.print("4.이용권 설명 : ");
 			String ticketComment = keyboard.next();
 
 			Ticket ticketInfo = new Ticket(inputTicketNumber, ticketName, price, expirationDate, ticketComment);
@@ -141,8 +218,22 @@ public class TicketMenuView {
 		System.out.println("\n[이용권 삭제]");
 		System.out.print("이용권번호를 입력하세요 : ");
 
-		int inputTicketNumber = keyboard.nextInt();
+		int inputTicketNumber = 0;
+		
+		while(true){
+			try {
 
+				inputTicketNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
+		
 		boolean canMake = Controllers.getTicketController().requestCheckNumber(inputTicketNumber);
 
 		if(!canMake) {

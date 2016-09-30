@@ -13,56 +13,56 @@ public class EmotionSelectAllView {
 	public EmotionSelectAllView() {
 
 		keyboard = new Scanner(System.in);
-		
+
 	}
-	
+
 
 	public void EmotionSelectAll(ArrayList<Emotion> emotions) {
 
 		if(emotions.size() == 0) {
 
 			System.out.println("등록된 감정이 없습니다.");
-			
+
 		} else {
 
 			System.out.println("번호\t감정명");
-			
+
 			for(int i=0; i<emotions.size(); i++) {
 
 				System.out.println(emotions.get(i).getEmotionNumber()+"\t"
 						+emotions.get(i).getEmotionName());
-				
+
 			}
-			
+
 		}
 
 		Controllers.getEmotionController().gotoEmotionMenu();
-		
+
 	}
 
 	public void menu() {
 
 		int selectedNumber = 0;
-		
+
 		while(true) {
 
 			System.out.println("[감정관리모드]");
 			System.out.print("[1.감정 등록  2.감정명 수정  3.감정 삭제 0.이전메뉴] : ");
 
+
 			try {
-				
-				selectedNumber = keyboard.nextInt();
-				
-			}
-			
-			catch(InputMismatchException e) {
-				
-				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
-				
+
+				selectedNumber= keyboard.nextInt();
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+
 			}
 
+
 			switch(selectedNumber) {
-			
+
 			case 1 :
 				Controllers.getEmotionController().requestRegisterEmotionView();
 				break;
@@ -83,7 +83,7 @@ public class EmotionSelectAllView {
 				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
 				break;
 			}
-			
+
 		}
 
 	}

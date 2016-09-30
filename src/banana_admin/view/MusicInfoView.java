@@ -24,11 +24,24 @@ public class MusicInfoView {
 		for(int i = 0; i < musicList.size(); i++) {
 			
 			System.out.print(musicList.get(i).getMusicNumber() + "\t");
-			System.out.print(musicList.get(i).getTitle() + "\t\t");
+			String title = musicList.get(i).getTitle();
+			
+			if(title.length() >= 6) {
+				
+				title = title.substring(0, 5);
+				title = title + "..";
+				
+			} else {
+				
+				title = title + "\t";
+				
+			}
+			
+			System.out.print(title + "\t");
 			System.out.print(musicList.get(i).getSinger() + "\t");
 			System.out.print(musicList.get(i).getEmotionNumber() + "\t");
 			System.out.println(musicList.get(i).getPlayingCount());
-			
+
 		}
 
 		Controllers.getMusicController().requestMusicInfoSub();
@@ -44,19 +57,19 @@ public class MusicInfoView {
 			System.out.print("[1.음원등록 2.음원조회  3.음원수정  4.음원삭제  0.이전메뉴] : ");
 
 			try {
-				
+
 				selectedMenu = keyboard.nextInt();
-				
+
 			}
-			
+
 			catch(InputMismatchException e) {
-				
-				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
-				
+
+				keyboard = new Scanner(System.in);
+
 			}
 
 			switch (selectedMenu) {
-			
+
 			case 1:
 				Controllers.getMusicController().requestRegisterMusic();
 				break;

@@ -51,7 +51,20 @@ public class MusicRegisterView {
 				}
 				
 				System.out.println("");
-				emotionNumber = keyboard.nextInt();
+				
+				while(true){
+					try {
+
+						emotionNumber = keyboard.nextInt();
+						break;
+
+					} catch (InputMismatchException e) {
+
+						keyboard = new Scanner(System.in);
+						System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+					} 
+				}
 				exit = false;
 
 			} catch(InputMismatchException e) {	

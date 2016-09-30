@@ -1,18 +1,14 @@
 package banana_admin.view;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
 import banana_admin.domain.Admin;
 
 public class SelectAllAdminView {
-   
-   private Scanner keyboard;
+
    
    public SelectAllAdminView() {
-      
-      keyboard = new Scanner(System.in);
       
    }
    

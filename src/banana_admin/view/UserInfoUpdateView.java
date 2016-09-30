@@ -1,5 +1,6 @@
 package banana_admin.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
@@ -17,9 +18,22 @@ public class UserInfoUpdateView {
 	
 	public void selectUpdateView() {
 
-		int selectUserNumber;
+		int selectUserNumber = 0;
 		System.out.print("\n유저 번호 입력해주세요: ");
-		selectUserNumber = keyboard.nextInt();
+		
+		while(true){
+			try {
+
+				selectUserNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+				keyboard = new Scanner(System.in);
+
+			} 
+		}
 
 		Controllers.getUserController().responseUpdateUserInfo(selectUserNumber);
 		

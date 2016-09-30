@@ -1,5 +1,6 @@
 package banana_admin.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
@@ -27,7 +28,20 @@ public class MusicUpdateView {
 		int musicNumber = 0;
 		
 		System.out.print("\n수정할 음원 번호를 입력하세요 : ");
-		musicNumber = keyboard.nextInt();
+		
+		while(true){
+			try {
+
+				musicNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
 
 		System.out.println("\n[음원 수정 모드]");
 		
@@ -35,10 +49,23 @@ public class MusicUpdateView {
 		title = keyboard.next();
 		System.out.print("가수 : ");
 		singer = keyboard.next();
-		System.out.print("가사 :");
+		System.out.print("가사 : ");
 		lyrics = keyboard.next();
-		System.out.print("감정 번호 :");
-		emotionNumber = keyboard.nextInt();
+		System.out.print("감정 번호 : ");
+		
+		while(true){
+			try {
+
+				emotionNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
 
 		music = new Music(musicNumber,title,singer,lyrics,emotionNumber);		
 		Controllers.getMusicController().responseUpdateMusic(music);
