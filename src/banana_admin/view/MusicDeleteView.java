@@ -17,7 +17,7 @@ public class MusicDeleteView {
 
 	public void getDeleteMusicNumber() {
 
-		int musicNumber = 0;
+		int musicNumber = -1;
 
 		System.out.print("\n삭제할 음원 번호를 입력하세요 : ");
 

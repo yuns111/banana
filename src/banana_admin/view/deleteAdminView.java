@@ -17,7 +17,7 @@ public class DeleteAdminView {
 
 	public void searchDeleteAdminNumber() {
 
-		int searchDeleteAdminNumber = 0;
+		int searchDeleteAdminNumber = -1;
 
 		System.out.println("\n[관리자 삭제 모드]");
 		System.out.print("관리자 번호 : ");

@@ -19,7 +19,7 @@ public class UpdateAdminView {
 	//수정할 관리자 번호 입력 화면
 	public void searchUpdateAdminNumber() {
 
-		int searchAdminNumber = 0;
+		int searchAdminNumber = -1;
 
 		System.out.println("\n[수정할 관리자 선택]");
 		System.out.print("관리자 번호 : ");

@@ -17,7 +17,7 @@ public class SelectOneMusicView {
 
 	public void getSelectOneMusicNumber() {
 
-		int musicNumber = 0;
+		int musicNumber = -1;
 
 		System.out.print("\n조회할 음원 번호를 입력하세요 : ");
 		

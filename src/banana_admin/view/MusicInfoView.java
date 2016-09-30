@@ -52,7 +52,7 @@ public class MusicInfoView {
 
 		while(true) {
 
-			int selectedMenu = 0;
+			int selectedMenu = -1;
 			System.out.println("\n[음원관리 모드]");
 			System.out.print("[1.음원등록 2.음원조회  3.음원수정  4.음원삭제  0.이전메뉴] : ");
 

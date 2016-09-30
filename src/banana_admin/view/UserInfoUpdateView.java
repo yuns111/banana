@@ -18,7 +18,7 @@ public class UserInfoUpdateView {
 	
 	public void selectUpdateView() {
 
-		int selectUserNumber = 0;
+		int selectUserNumber = -1;
 		System.out.print("\n유저 번호 입력해주세요: ");
 		
 		while(true){

@@ -21,7 +21,7 @@ public class AdminMenuView {
 
 			System.out.println("\n[관리자 메뉴]");
 			System.out.print("[1.로그인 2.프로그램 종료] : ");
-			int choiceAdminMenu = 0;
+			int choiceAdminMenu = -1;
 
 			try {
 
@@ -58,7 +58,7 @@ public class AdminMenuView {
 
 			System.out.println("\n[M관리자 메뉴]");
 			System.out.print("[1.관리자 관리 2.음원 관리 3.회원 관리 4.이용권 관리 5.감정 관리 6.통계 0.프로그램종료] : ");
-			int choiceSubAdminMenu = 0;
+			int choiceSubAdminMenu = -1;
 
 			try {
 
@@ -115,7 +115,7 @@ public class AdminMenuView {
 
 			System.out.println("\n[관리자 메뉴]");
 			System.out.print("[1.음원 관리 2.회원 관리 3.이용권 관리 4.감정 관리 5.통계 0.프로그램종료] : ");
-			int choiceSubAdminMenu = 0;
+			int choiceSubAdminMenu = -1;
 
 			try {
 
@@ -168,7 +168,7 @@ public class AdminMenuView {
 			System.out.println("[관리자 관리 모드]");
 			System.out.print("[1.관리자 등록 2.관리자 수정 3.관리자 삭제 0.이전메뉴] : ");
 
-			int choiceAdminManage = 0;
+			int choiceAdminManage = -1;
 
 			try {
 

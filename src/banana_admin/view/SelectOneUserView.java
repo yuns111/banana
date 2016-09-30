@@ -16,7 +16,7 @@ public class SelectOneUserView {
 
 	public void selectOneView() {
 
-		int selectUserNumber;
+		int selectUserNumber = -1;
 		System.out.print("\n유저 번호 입력해주세요: ");
 		
 		while(true){
@@ -40,7 +40,7 @@ public class SelectOneUserView {
 	
 	public void selectDeleteView() {
 
-		int selectUserNumber = 0;
+		int selectUserNumber = -1;
 		System.out.print("\n유저 번호 입력해주세요: ");
 		
 		while(true){

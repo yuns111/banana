@@ -24,7 +24,7 @@ public class MusicRegisterView {
 		String title = null;
 		String singer = null;
 		String lyrics = null;
-		int emotionNumber = 0;
+		int emotionNumber = -1;
 		boolean exit = true;
 
 		do {

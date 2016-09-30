@@ -20,7 +20,7 @@ public class EmotionUpdateDeleteView {
 
 		System.out.print("수정할 감정 번호 : ");
 
-		int updateNumber = 0;
+		int updateNumber = -1;
 
 		while(true){
 			try {
@@ -50,7 +50,7 @@ public class EmotionUpdateDeleteView {
 		System.out.print("삭제할 감정 번호 : ");
 
 
-		int deleteNumber = 0;
+		int deleteNumber = -1;
 
 		while(true){
 			try {

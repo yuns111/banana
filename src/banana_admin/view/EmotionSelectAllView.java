@@ -42,7 +42,7 @@ public class EmotionSelectAllView {
 
 	public void menu() {
 
-		int selectedNumber = 0;
+		int selectedNumber = -1;
 
 		while(true) {
 

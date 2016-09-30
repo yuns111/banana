@@ -26,13 +26,13 @@ public class TicketMenuView {
 
 			System.out.println("\n[이용권관리모드]");
 			System.out.print("[1.이용권 등록 2.이용권 수정 3.이용권 삭제 0.이전메뉴] : ");
-			int choiceTicketMenu = 0;
+			int choiceTicketMenu = -1;
 
 			try {
 				
 				choiceTicketMenu = keyboard.nextInt();
 				
-			} catch (TypeMismatchException e) {
+			} catch (InputMismatchException e) {
 				
 				keyboard = new Scanner(System.in);
 				
@@ -96,7 +96,7 @@ public class TicketMenuView {
 		String ticketName = keyboard.next();
 		System.out.print("2.이용권 가격 : ");
 
-		int price = 0;
+		int price = -1;
 		
 		while(true){
 			try {
@@ -114,7 +114,7 @@ public class TicketMenuView {
 
 		System.out.print("3.이용권 기한 : ");
 		
-		int expirationDate = 0;
+		int expirationDate = -1;
 		
 		while(true){
 			try {
@@ -143,7 +143,7 @@ public class TicketMenuView {
 
 		System.out.println("\n[이용권 수정]");
 		System.out.print("이용권번호를 입력하세요 : ");
-		int inputTicketNumber = 0;
+		int inputTicketNumber = -1;
 		
 		while(true){
 			try {
@@ -170,7 +170,7 @@ public class TicketMenuView {
 			System.out.print("1.이용권명 : ");
 			String ticketName = keyboard.next();
 
-			int price = 0;
+			int price = -1;
 			
 			while(true){
 				try {
@@ -188,7 +188,7 @@ public class TicketMenuView {
 
 			System.out.print("3.이용권 기한 : ");
 			
-			int expirationDate = 0;
+			int expirationDate = -1;
 			
 			while(true){
 				try {
@@ -218,7 +218,7 @@ public class TicketMenuView {
 		System.out.println("\n[이용권 삭제]");
 		System.out.print("이용권번호를 입력하세요 : ");
 
-		int inputTicketNumber = 0;
+		int inputTicketNumber = -1;
 		
 		while(true){
 			try {

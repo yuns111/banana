@@ -24,8 +24,8 @@ public class MusicUpdateView {
 		String title = null;
 		String singer = null;
 		String lyrics = null;
-		int emotionNumber = 0;
-		int musicNumber = 0;
+		int emotionNumber = -1;
+		int musicNumber = -1;
 		
 		System.out.print("\n수정할 음원 번호를 입력하세요 : ");
 		
