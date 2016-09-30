@@ -26,9 +26,10 @@ public class EmotionUpdateDeleteView {
 		Emotion emotion = new Emotion(updateNumber, updateName);
 		
 		Controllers.getEmotionController().requestUpdateEmotion(emotion);
+		
 	}
 	
-	public void selectOneForDelete(){
+	public void selectOneForDelete() {
 		
 		System.out.print("삭제할 감정 번호 : ");
 		int deleteNumber = keyboard.nextInt();

@@ -32,7 +32,7 @@ public class MusicController {
 	}
 
 	//음원 관리 서브메뉴 요청
-	public void requestMusicInfoSub(){
+	public void requestMusicInfoSub() {
 
 		MusicInfoView musicInfoView = new MusicInfoView();
 		musicInfoView.musicInfoSub();
@@ -56,9 +56,13 @@ public class MusicController {
 		boolean success = musicDao.insertRegisterMusic(music);
 
 		if(success) {
+			
 			alertView.alert("음원등록 성공.");
+			
 		} else {
+			
 			alertView.alert("음원등록 실패.");
+			
 		}
 
 		Controllers.getMusicController().requestSelectAllMusic();
@@ -98,9 +102,13 @@ public class MusicController {
 		boolean success = musicDao.updateMusic(music);
 
 		if(success) {
+			
 			alertView.alert("음원 수정 성공");
+			
 		} else {
+			
 			alertView.alert("음원 수정 실패");
+			
 		}
 
 		Controllers.getMusicController().requestSelectAllMusic();
@@ -113,7 +121,6 @@ public class MusicController {
 		MusicDeleteView musicDeleteView = new MusicDeleteView();
 		musicDeleteView.getDeleteMusicNumber();
 
-
 	}
 
 	public void responseDeleteMusic(int musicNumber) {
@@ -123,12 +130,17 @@ public class MusicController {
 		AlertView alertView = new AlertView();
 
 		if(success) {
+			
 			alertView.alert("음원삭제 성공");
+			
 		} else {
+			
 			alertView.alert("음원삭제 실패");
+			
 		}
 
 		Controllers.getMusicController().requestSelectAllMusic();
+		
 	}
 
 }

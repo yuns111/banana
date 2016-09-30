@@ -10,58 +10,71 @@ import banana_admin.repository.LoginRepository;
 public class LoginDao {
 
 	public LoginDao() {
+		
 		new LoginRepository();
+		
 	}
 
-	public boolean insert(Login login){
+	public boolean insert(Login login) {
 
 		boolean success = false;
 		String userPassword = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		try{
+		try {
+			
 			//아이디랑 비밀번호 체크
 			String sql = "select ADMINPASSWORD from banana_admin where adminID = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, login.getLoginId());
 			rs = pstmt.executeQuery();
 
-			if(rs.next()){				
+			if(rs.next()) {		
+				
 				userPassword = rs.getString(1);
 
-				if(userPassword.equals(login.getLoginPassword())){
+				if(userPassword.equals(login.getLoginPassword())) {
+					
 					//맞으면 repository에 넣기
 					success = true;
 					LoginRepository.getLogin().setLoginId(login.getLoginId());
 					LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+					
 				}
+				
 			} 
 
-		} catch(SQLException e){
+		} catch(SQLException e) {
 
-			System.out.println("SQL문장이 잘못되었습니다.");	
+			System.out.println("SQL문장이 잘못되었습니다.");
 
-		} finally{
+		} finally {
 
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			}if(rs != null) {
+				
+			} if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}
 
 		return success;
+		
 	}
 
-	public int checkGrade(){
+	public int checkGrade() {
 
 		int grade = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try{
+			
 			//아이디랑 비밀번호 체크
 			String sql = "select adminGrade from banana_admin where adminId = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
@@ -69,34 +82,42 @@ public class LoginDao {
 
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
+			while(rs.next()) {
 
 				grade = rs.getInt(1);
+				
 			}
 
-		} catch(SQLException e){
+		} catch(SQLException e) {
 
 			System.out.println("SQL문장이 잘못되었습니다.");	
 
-		} finally{
+		} finally {
 
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			}if(rs != null) {
+				
+			} if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 		}
 
 		return grade;
+		
 	}
 
-	public boolean delete(){
+	public boolean delete() {
 
 		boolean success = false;
 		LoginRepository.getLogin().setLoginId(null);
 		LoginRepository.getLogin().setLoginPassword(null);
 		success = true;
 		return success;
+		
 	}
 
 }

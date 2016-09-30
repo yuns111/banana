@@ -23,6 +23,7 @@ public class DeleteAdminView {
 		searchDeleteAdminNumber = keyboard.nextInt();
 		
 		Controllers.getAdminController().requestDeleteAdmin(searchDeleteAdminNumber);
+		
 	}
 	
 }

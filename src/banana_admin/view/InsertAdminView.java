@@ -15,7 +15,7 @@ public class InsertAdminView {
 		
 	}
 	
-	public void insertAdminView(){
+	public void insertAdminView() {
 		
 		System.out.print("관리자 아이디을 입력하세요 : ");
 		String insertAdminId = keyboard.next();
@@ -28,4 +28,5 @@ public class InsertAdminView {
 		Controllers.getAdminController().requestRegisterAdmin(adminDomain);
 		
 	}
+	
 }

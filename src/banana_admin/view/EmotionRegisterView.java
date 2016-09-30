@@ -11,13 +11,16 @@ public class EmotionRegisterView {
 	public EmotionRegisterView() {
 		
 		keyboard = new Scanner(System.in);
+		
 	}
-	public void emotionRegister(){
+	
+	public void emotionRegister() {
 		
 		System.out.print("등록할 감정 명 : ");
 		String emotionName = keyboard.next();
 		
 		Controllers.getEmotionController().requestRegisterEmotion(emotionName);
+		
 	}
 
 }

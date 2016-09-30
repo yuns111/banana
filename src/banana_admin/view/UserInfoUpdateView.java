@@ -14,13 +14,15 @@ public class UserInfoUpdateView {
 		keyboard = new Scanner(System.in);
 
 	}
-	public void selectUpdateView(){
+	
+	public void selectUpdateView() {
 
 		int selectUserNumber;
 		System.out.print("\n유저 번호 입력해주세요: ");
 		selectUserNumber = keyboard.nextInt();
 
 		Controllers.getUserController().responseUpdateUserInfo(selectUserNumber);
+		
 	}
 
 	//수정할 회원 정보 입력
@@ -41,7 +43,6 @@ public class UserInfoUpdateView {
 
 		user = new User(userNumber,userPassword,userName,userGender,userPhoneNumber);
 		Controllers.getUserController().requestResponseUser(user);
-
 
 	}
 

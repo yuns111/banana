@@ -12,10 +12,11 @@ import banana_admin.view.AlertView;
 public class TicketDao {
 
 	public TicketDao() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public boolean ticketRegister(Ticket ticketInfo){
+	public boolean ticketRegister(Ticket ticketInfo) {
+		
 		boolean success = false;
 		PreparedStatement pstmt1 = null; 		
 		PreparedStatement pstmt2 = null;
@@ -29,7 +30,8 @@ public class TicketDao {
 			pstmt1.setString(1, ticketInfo.getTicketName());
 			rs1 = pstmt1.executeQuery();
 
-			if(rs1 == null){
+			if(rs1 == null) {
+				
 				AlertView alertView = new AlertView();
 				alertView.alert("동일한 이용권명이 있습니다");
 
@@ -43,106 +45,166 @@ public class TicketDao {
 				pstmt2.setString(4, ticketInfo.getTicketComment());
 				result = pstmt2.executeUpdate();
 
-				if(result != 0){
+				if(result != 0) {
+					
 					success = true;
+					
 				}
+				
 			}
 
 		} catch (SQLException e) {
+			
 			System.out.println("쿼리 이상");
+			
 		} finally {
-			if(pstmt1 != null){
+			
+			if(pstmt1 != null) {
+				
 				try { pstmt1.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
-			if(pstmt2 != null){
-				try { pstmt2.close();} catch (SQLException e) {
+			
+			if(pstmt2 != null) {
+				
+				try { pstmt2.close(); } catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
-			if(rs1 != null){
+			
+			if(rs1 != null) {
+				
 				try { rs1.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
+			
 		}
+		
 		return success;
 
 	}
 
-	public ArrayList<Ticket> ticketList(){
+	public ArrayList<Ticket> ticketList() {
+		
 		ArrayList<Ticket> ticketInfos= new ArrayList<Ticket>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
+			
 			String sql = "select * from ticket order by ticketNumber";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
+			while(rs.next()) {
+				
 				int ticketNumber = rs.getInt("ticketNumber");
 				String ticketName = rs.getString("ticketname");
 				int price = rs.getInt("price");
 				int expirationDate = rs.getInt("expirationDate");
 				String ticketComment = rs.getString("ticketComment");
 				Ticket ticketInfo = new Ticket(ticketNumber, ticketName, price, expirationDate, ticketComment);
+				
 				ticketInfos.add(ticketInfo);
+				
 			}
+			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
-			if(rs != null){
+			
+			if(rs != null) {
+				
 				try { rs.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
-			if(pstmt != null){
+			
+			if(pstmt != null) {
+				
 				try { pstmt.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
+			
 		}
+		
 		return ticketInfos;
+		
 	}
 
-
-	public boolean checkTicketNumber(int inputTicketNumber){
+	public boolean checkTicketNumber(int inputTicketNumber) {
+		
 		boolean canMake = true;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
+			
 			String sql = "select ticketnumber from ticket where ticketnumber = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, inputTicketNumber);
 			rs = pstmt.executeQuery();
 
-			if(rs == null){//있는 경우 
+			if(rs == null) {//있는 경우 
+				
 				canMake = false;
+				
 			}
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
-			if(rs != null){
+			
+			if(rs != null) {
+				
 				try { rs.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
-			if(pstmt != null){
+			
+			if(pstmt != null) {
+				
 				try { pstmt.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
+			
 		}
 
 		return canMake;
+		
 	}
 
-
-	public boolean updateTicket(Ticket ticketInfo){
+	public boolean updateTicket(Ticket ticketInfo) {
+		
 		boolean success = false;
 		PreparedStatement pstmt = null; 		
 		int result = 0;
@@ -159,29 +221,42 @@ public class TicketDao {
 			pstmt.setInt(5, ticketInfo.getTicketNumber());
 			result = pstmt.executeUpdate();
 
-			if(result != 0){
+			if(result != 0) {
+				
 				success = true;
+				
 			}
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
-			if(pstmt != null){
+			
+			if(pstmt != null) {
+				
 				try { pstmt.close();} catch (SQLException e) {
+					
 					e.printStackTrace();
+					
 				}
+				
 			}
+			
 		}
 
 		return success;
+		
 	}
 
-	public boolean deleteTicket(int inputTicketNumber){
+	public boolean deleteTicket(int inputTicketNumber) {
+		
 		boolean success = false;
 		PreparedStatement pstmt = null;
 		int result = 0;
 
 		try {
+			
 			String sql = "delete from ticket where ticketNumber = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, inputTicketNumber);
@@ -189,17 +264,27 @@ public class TicketDao {
 			result = pstmt.executeUpdate();
 
 			if(result != 0) {
+				
 				success = true;
+				
 			}
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
+			
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 		}
 
 		return success;
+		
 	}
+	
 }

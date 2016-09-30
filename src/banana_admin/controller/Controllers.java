@@ -21,42 +21,50 @@ public class Controllers {
 		adminController = new AdminController();
 		loginController = new LoginController();
 		statsController = new StatsController();
+		
 	}
 	
 	public static TicketController getTicketController() {
 		
 		return ticketController;
+		
 	}
 
 
 	public static ProgramController getProgramController() {
 
 		return programController;
+		
 	}
 
 	public static UserController getUserController() {
 
 		return userController;
+		
 	}
 
 	public static EmotionController getEmotionController() {
 
 		return emotionController;
+		
 	}
 
 	public static MusicController getMusicController() {
 		
 		return musicController;
+		
 	}
 	
 	public static AdminController getAdminController() {
 
 		return adminController;
+		
 	}
 
 	public static LoginController getLoginController() {
 		
 		return loginController;
+		
 	}
 
 	public static StatsController getStatsController() {

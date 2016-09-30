@@ -23,10 +23,12 @@ public class UserInfoView {
 
 		System.out.println("회원번호\t회원id\t회원이름");
 
-		for(int i=0;i<user.size();i++){
+		for(int i = 0; i < user.size(); i++) {
+			
 			System.out.print(user.get(i).getUserNumber() + "\t");
 			System.out.print(user.get(i).getUserId() + "\t");
 			System.out.println(user.get(i).getUserName());
+			
 		}
 
 		Controllers.getUserController().requestMenu();
@@ -42,14 +44,20 @@ public class UserInfoView {
 			System.out.println("[회원관리모드]");
 			System.out.print("[1.회원정보조회  2.회원정보수정  3.회원강제탈퇴  0.이전메뉴] : ");
 
-			try{
+			try {
+				
 				selectedMenu = keyboard.nextInt();
+				
 			}
-			catch(InputMismatchException e){
+			
+			catch(InputMismatchException e) {
 
 				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+				
 			}
+			
 			switch (selectedMenu) {
+			
 			case 1:
 				Controllers.getUserController().requestOneUser();
 				break;
@@ -60,21 +68,19 @@ public class UserInfoView {
 				Controllers.getUserController().requestDeleteUser();
 				break;
 			case 0:
-				if(Controllers.getLoginController().requestCheckMaster()){
-
+				if(Controllers.getLoginController().requestCheckMaster()) {
 					Controllers.getAdminController().goToMAdminMenu();
-
 				} else {
-
 					Controllers.getAdminController().goToAdminMenu();
 				}
 				break;
-
 			default:
 				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+				
 			}
+			
 		}
-
+		
 	}
 
 }

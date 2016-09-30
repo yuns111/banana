@@ -13,9 +13,10 @@ public class StatsController {
 	public StatsController() {
 
 		statsDao = new StatsDao();
+		
 	}
 
-	public void requestStatsAnalysis(){
+	public void requestStatsAnalysis() {
 
 		//일별 매출액
 		ArrayList<Stats> daySumPrice = statsDao.statsDaySalesMoney();
