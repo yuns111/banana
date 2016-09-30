@@ -1,11 +1,5 @@
 package banana_admin.domain;
 
-/*ticketNumber int primary key,
-ticketName varchar2(20),
-Price int check(price>0),
-expirationDate int,
-ticketComment varchar2(?)*/
-
 public class Ticket {
 
 	private int ticketNumber;
@@ -15,7 +9,6 @@ public class Ticket {
 	private String ticketComment;
 	
 	public Ticket(String ticketName, int price, int expirationDate, String ticketComment) {
-		super();
 		this.ticketName = ticketName;
 		this.price = price;
 		this.expirationDate = expirationDate;
@@ -23,7 +16,6 @@ public class Ticket {
 	}
 
 	public Ticket(int ticketNumber, String ticketName, int price, int expirationDate, String ticketComment) {
-		super();
 		this.ticketNumber = ticketNumber;
 		this.ticketName = ticketName;
 		this.price = price;
@@ -71,5 +63,4 @@ public class Ticket {
 		this.ticketComment = ticketComment;
 	}
 
-	
 }

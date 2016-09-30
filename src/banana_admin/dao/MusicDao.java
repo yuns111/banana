@@ -34,7 +34,9 @@ public class MusicDao {
 			result = pstmt.executeUpdate();
 
 			if(result != 0) {
+				
 				success = true;
+				
 			}
 
 		} catch (SQLException e) {
@@ -45,7 +47,9 @@ public class MusicDao {
 		} finally {
 
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}
@@ -69,7 +73,9 @@ public class MusicDao {
 			result = pstmt.executeUpdate();
 
 			if(result != 0) {
+				
 				success = true;
+				
 			}	
 
 		} catch (SQLException e) {
@@ -80,7 +86,9 @@ public class MusicDao {
 		} finally {
 
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}		
@@ -103,11 +111,13 @@ public class MusicDao {
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
+				
 				music.setMusicNumber(rs.getInt("musicNumber"));
 				music.setTitle(rs.getString("title"));
 				music.setSinger(rs.getString("singer"));
 				music.setEmotionNumber(rs.getInt("emotionNumber"));
 				music.setPlayingCount(rs.getInt("playingCount"));
+				
 			}
 
 		} catch (SQLException e) {
@@ -118,10 +128,15 @@ public class MusicDao {
 		} finally {
 
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}		
@@ -165,15 +180,21 @@ public class MusicDao {
 		} finally {
 
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}
 
 		return musicList;
+		
 	}
 
 	//음원 수정 Dao 메서드
@@ -196,7 +217,9 @@ public class MusicDao {
 			result = pstmt.executeUpdate();
 			
 			if(result != 0) {
+				
 				success = true;
+				
 			} 
 			
 		} catch (SQLException e) {
@@ -207,7 +230,9 @@ public class MusicDao {
 		} finally {
 
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}

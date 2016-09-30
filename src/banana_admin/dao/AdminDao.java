@@ -17,12 +17,15 @@ public class AdminDao {
    }
 
    //관리자 등록
-   public boolean insertAdmin(Admin adminDomain){
+   public boolean insertAdmin(Admin adminDomain) {
 
       boolean success = false;
-      PreparedStatement pstmt1 = null; PreparedStatement pstmt2 = null; PreparedStatement pstmt3 = null;
-      ResultSet rs1 = null; ResultSet rs2 = null; ResultSet rs3 = null;
-
+      PreparedStatement pstmt1 = null;
+      PreparedStatement pstmt2 = null;
+      PreparedStatement pstmt3 = null;
+      ResultSet rs1 = null;
+      ResultSet rs2 = null;
+      ResultSet rs3 = null;
 
       try {
          
@@ -40,7 +43,8 @@ public class AdminDao {
          pstmt2.setString(1, adminid);
          rs2 = pstmt2.executeQuery();
          
-         if(rs1.next() || rs2.next()){
+         if(rs1.next() || rs2.next()) {
+        	 
             new AlertView().alert("이미 아이디가 있습니다.");
             
          } else {
@@ -54,46 +58,82 @@ public class AdminDao {
             
             int result = pstmt3.executeUpdate();
 
-            if(result != 0){
+            if(result != 0) {
+            	
                success = true;
+               
             }
+            
          }
 
       } catch (SQLException e) {
+    	  
          AlertView alertView = new AlertView();
          alertView.alert("관리자 등록 시 오류가 발생했습니다.");
          e.printStackTrace();
+         
       } finally {
-         if(rs3 != null){
+    	  
+         if(rs3 != null) {
+        	 
             try {rs3.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
-         if(pstmt3 != null){
+         
+         if(pstmt3 != null) {
+        	 
             try {pstmt3.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
-         if(rs2 != null){
+         
+         if(rs2 != null) {
+        	 
             try {rs2.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
-         if(pstmt2 != null){
+         
+         if(pstmt2 != null) {
+        	 
             try {pstmt2.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
-         if(rs1 != null){
+         
+         if(rs1 != null) {
+        	 
             try {rs1.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
-         if(pstmt1 != null){
+         
+         if(pstmt1 != null) {
+        	 
             try {pstmt1.close();} catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
+            
          }
+         
       }
 
       return success;
@@ -108,11 +148,13 @@ public class AdminDao {
       ResultSet rs = null;
 
       try {
+    	  
          String sql = "select * from banana_admin";
          stmt = Controllers.getProgramController().getConnection().createStatement();
          rs = stmt.executeQuery(sql);
 
          while(rs.next()) {
+        	 
             Admin admin = new Admin();
             admin.setAdminNumber(rs.getInt("adminNumber"));
             admin.setAdminID(rs.getString("adminID"));
@@ -120,58 +162,84 @@ public class AdminDao {
             admin.setAdminName(rs.getString("adminName"));
             admin.setAdminGrade(rs.getInt("adminGrade"));
             adminSelectAll.add(admin);
+            
          }
 
       } catch (SQLException e) {
+    	  
          e.printStackTrace();
+         
       } finally {
+    	
          if(rs != null) {
+        	 
             try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+            
          } if(stmt != null) {
+        	 
             try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            
          }
+         
       }
 
       return adminSelectAll;
 
    }
 
-   public boolean searchNumberQuery(int searchAdminNumber){
+   public boolean searchNumberQuery(int searchAdminNumber) {
+	   
       boolean success = true;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
       
       try {
+    	  
          String sql = "select adminNumber from banana_admin where adminNumber = ?";
          pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
          pstmt.setInt(1, searchAdminNumber);
          rs = pstmt.executeQuery();
          
-         if(rs.next()){
+         if(rs.next()) {
+        	 
             success = false;
+            
          }
-         
-         
-         
+                  
       } catch (SQLException e) {
+    	  
          e.printStackTrace();
+         
       } finally {
-         if(pstmt != null){
+    	  
+         if(pstmt != null) {
+        	 
             try {
+            	
                pstmt.close();
+               
             } catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
             
          }
-         if(rs != null){
+         
+         if(rs != null) {
+        	 
             try {
+            	
                rs.close();
+               
             } catch (SQLException e) {
+            	
                e.printStackTrace();
+               
             }
             
          }
+         
       }
       
       return success;
@@ -185,6 +253,7 @@ public class AdminDao {
       Statement stmt = null;   
 
       try {
+    	  
          String sql = "update banana_admin set adminID = '" + updateAdminAllInfo.getAdminID() +
                "', adminPassword = '" + updateAdminAllInfo.getAdminPassword() +
                "', adminName = '" + updateAdminAllInfo.getAdminName() +
@@ -192,20 +261,26 @@ public class AdminDao {
 
          stmt = Controllers.getProgramController().getConnection().createStatement();
 
-
-
          int result = stmt.executeUpdate(sql);
 
          if(result != 0) {
+        	 
             success = true;
+            
          }
 
       } catch (SQLException e) {
+    	  
          e.printStackTrace();
+         
       } finally {
+    	  
          if(stmt != null) {
+        	 
             try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            
          }
+         
       }
 
       return success;
@@ -220,6 +295,7 @@ public class AdminDao {
       int result = 0;
 
       try {
+    	  
          String sql = "delete from banana_admin where adminNumber = ?";
          pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 
@@ -228,17 +304,24 @@ public class AdminDao {
          result = pstmt.executeUpdate();
 
          if(result != 0) {
+        	 
             success = true;
+            
          }
 
       } catch (SQLException e) {
+    	  
          e.printStackTrace();
+         
       } finally {
+    	  
          if(pstmt != null) {
+        	 
             try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            
          }
+         
       }
-
 
       return success;
 

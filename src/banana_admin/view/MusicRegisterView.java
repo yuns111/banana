@@ -25,12 +25,12 @@ public class MusicRegisterView {
 		String singer = null;
 		String lyrics = null;
 		int emotionNumber = 0;
-
 		boolean exit = true;
 
 		do {
 
-			try {					
+			try {		
+				
 				System.out.println("\n[음원 등록 모드]");
 
 				System.out.print("제목 : ");	
@@ -44,17 +44,34 @@ public class MusicRegisterView {
 
 				System.out.print("감정번호 : ");
 				
-				for(int i=0; i< emotions.size(); i++){
+				for(int i=0; i< emotions.size(); i++) {
+					
 					System.out.print((i+1)+"."+emotions.get(i).getEmotionName()+"  ");
+					
 				}
+				
 				System.out.println("");
-				emotionNumber = keyboard.nextInt();
+				
+				while(true){
+					try {
 
+						emotionNumber = keyboard.nextInt();
+						break;
+
+					} catch (InputMismatchException e) {
+
+						keyboard = new Scanner(System.in);
+						System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+					} 
+				}
 				exit = false;
 
-			} catch(InputMismatchException e){			
+			} catch(InputMismatchException e) {	
+				
 				System.out.println("숫자를 입력하세요");
 				keyboard = new Scanner(System.in); 
+				
 			}
 
 		} while(exit);

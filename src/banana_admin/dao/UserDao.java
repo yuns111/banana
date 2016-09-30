@@ -15,13 +15,11 @@ public class UserDao {
 
 	}
 
-
 	//회원 수정 Dao 메서드
 	public boolean updateUserInfo(User user) {
 
 		boolean success = false;
 		PreparedStatement pstmt = null;
-
 		int result = 0;
 
 		try {
@@ -36,11 +34,15 @@ public class UserDao {
 			result = pstmt.executeUpdate();
 
 			if(result != 0) {
+				
 				success = true;
+				
 			}			
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}
 
 		return success;
@@ -52,7 +54,6 @@ public class UserDao {
 
 		boolean success = false;
 		PreparedStatement pstmt = null;
-
 		int result = 0;
 
 		try {
@@ -63,11 +64,15 @@ public class UserDao {
 			result = pstmt.executeUpdate();
 
 			if(result != 0) {
+				
 				success = true;
+				
 			}	
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}		
 
 		return success;
@@ -75,11 +80,12 @@ public class UserDao {
 	}
 	
 	//회원 조회 메서드
-	public User selectOneUser(int userNumber){
-		User user=new User();
-
+	public User selectOneUser(int userNumber) {
+		
+		User user = new User();
 		PreparedStatement pstmt = null;
 		ResultSet rs=null;
+		
 		try {
 
 			String sql = "select * from banana_user where userNumber=?";
@@ -87,35 +93,44 @@ public class UserDao {
 			pstmt.setInt(1, userNumber);
 
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
+				
 				user.setUserId(rs.getString("userId"));
 				user.setUserName(rs.getString("userName"));
 				user.setUserGender(rs.getString("userGender"));
 				user.setUserPhoneNumber(rs.getString("userPhoneNumber"));
-			}						
+				
+			}					
+			
 			pstmt.executeUpdate();		
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}
 
 		return user;
+		
 	}
 	
 	//회원 모든 리스트
-	public ArrayList<User> AllUserList(){
+	public ArrayList<User> AllUserList() {
 				
 		Statement stmt = null;
 		ResultSet rs=null;
 		ArrayList<User> userList = new ArrayList<User>();
 		
 		try {
+			
 			stmt = Controllers.getProgramController().getConnection().createStatement();
 			String sql = "select * from banana_user";
 			rs=stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				User user=new User();
+				
+				User user = new User();
 				
 				user.setUserNumber(rs.getInt("userNumber"));
 				user.setUserId(rs.getString("userId"));
@@ -123,7 +138,9 @@ public class UserDao {
 				user.setUserName(rs.getString("userName"));
 				user.setUserGender(rs.getString("userGender"));
 				user.setUserPhoneNumber(rs.getString("userPhoneNumber"));
+				
 				userList.add(user);
+				
 			}						
 
 
@@ -132,17 +149,23 @@ public class UserDao {
 			e.printStackTrace();
 			
 		} finally {
+			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 		}
 
 		return userList;
 
 	}
-
 
 }

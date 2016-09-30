@@ -1,5 +1,6 @@
 package banana_admin.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_admin.controller.Controllers;
@@ -22,7 +23,20 @@ public class UpdateAdminView {
 
 		System.out.println("\n[수정할 관리자 선택]");
 		System.out.print("관리자 번호 : ");
-		searchAdminNumber = keyboard.nextInt();
+		
+		while(true){
+			try {
+
+				searchAdminNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
 
 		Controllers.getAdminController().requestSearchNumberQuery(searchAdminNumber);
 

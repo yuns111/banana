@@ -19,16 +19,29 @@ public class MusicInfoView {
 
 	public void printMusicList(ArrayList<Music> musicList) {
 
-
-
 		System.out.println("음원번호\t제목\t\t가수\t감정번호\t재생횟수");
 
 		for(int i = 0; i < musicList.size(); i++) {
+			
 			System.out.print(musicList.get(i).getMusicNumber() + "\t");
-			System.out.print(musicList.get(i).getTitle() + "\t\t");
+			String title = musicList.get(i).getTitle();
+			
+			if(title.length() >= 6) {
+				
+				title = title.substring(0, 5);
+				title = title + "..";
+				
+			} else {
+				
+				title = title + "\t";
+				
+			}
+			
+			System.out.print(title + "\t");
 			System.out.print(musicList.get(i).getSinger() + "\t");
 			System.out.print(musicList.get(i).getEmotionNumber() + "\t");
 			System.out.println(musicList.get(i).getPlayingCount());
+
 		}
 
 		Controllers.getMusicController().requestMusicInfoSub();
@@ -43,15 +56,20 @@ public class MusicInfoView {
 			System.out.println("\n[음원관리 모드]");
 			System.out.print("[1.음원등록 2.음원조회  3.음원수정  4.음원삭제  0.이전메뉴] : ");
 
-			try{
+			try {
+
 				selectedMenu = keyboard.nextInt();
+
 			}
-			catch(InputMismatchException e){
-				
-				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
+
+			catch(InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+
 			}
 
 			switch (selectedMenu) {
+
 			case 1:
 				Controllers.getMusicController().requestRegisterMusic();
 				break;
@@ -65,16 +83,12 @@ public class MusicInfoView {
 				Controllers.getMusicController().requestDeleteMusic();
 				break;
 			case 0:
-				if(Controllers.getLoginController().requestCheckMaster()){
-
+				if(Controllers.getLoginController().requestCheckMaster()) {
 					Controllers.getAdminController().goToMAdminMenu();
-
 				} else {
-
 					Controllers.getAdminController().goToAdminMenu();
 				}
 				break;
-
 			default:
 				System.out.println("잘못입력하셨습니다 다시 선택해주세요.");
 			}
