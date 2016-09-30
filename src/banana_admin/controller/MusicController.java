@@ -38,7 +38,7 @@ public class MusicController {
 		musicInfoView.musicInfoSub();
 
 	}
-	
+
 	//음원 등록 요청을 처리하는 메서드
 	public void requestRegisterMusic() {
 
@@ -60,6 +60,8 @@ public class MusicController {
 		} else {
 			alertView.alert("음원등록 실패.");
 		}
+
+		Controllers.getMusicController().requestSelectAllMusic();
 
 	}
 
@@ -87,21 +89,23 @@ public class MusicController {
 		musicUpdateView.updateMusic();
 
 	}
-	
+
 	//음원 수정 응답
-		public void responseUpdateMusic(Music music) {
+	public void responseUpdateMusic(Music music) {
 
-			//Dao 통해 수정
-			AlertView alertView = new AlertView();
-			boolean success = musicDao.updateMusic(music);
+		//Dao 통해 수정
+		AlertView alertView = new AlertView();
+		boolean success = musicDao.updateMusic(music);
 
-			if(success) {
-				alertView.alert("음원 수정 성공");
-			} else {
-				alertView.alert("음원 수정 실패");
-			}
-
+		if(success) {
+			alertView.alert("음원 수정 성공");
+		} else {
+			alertView.alert("음원 수정 실패");
 		}
+
+		Controllers.getMusicController().requestSelectAllMusic();
+
+	}
 
 	//음원 삭제 요청을 처리하는 메서드
 	public void requestDeleteMusic() {
@@ -124,6 +128,7 @@ public class MusicController {
 			alertView.alert("음원삭제 실패");
 		}
 
+		Controllers.getMusicController().requestSelectAllMusic();
 	}
 
 }

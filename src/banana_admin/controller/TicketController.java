@@ -34,6 +34,8 @@ public class TicketController {
 		} else {
 			System.out.println("이용권 등록에 실패하였습니다.");
 		}
+		
+		Controllers.getTicketController().requestTicketList();
 	}
 
 	public void requestTicketList(){
@@ -41,7 +43,6 @@ public class TicketController {
 		ArrayList<Ticket> ticketInfos = ticketDao.ticketList();
 
 		TicketMenuView ticketList = new TicketMenuView();
-
 		ticketList.ticketList(ticketInfos);
 	}
 
@@ -62,6 +63,7 @@ public class TicketController {
 			System.out.println("정보 수정에 실패하였습니다.");
 		}
 		
+		Controllers.getTicketController().requestTicketList();
 	}
 
 	public boolean requestDeleteTicket(int inputTicketNumber){

@@ -36,7 +36,7 @@ public class UpdateAdminView {
 		String adminID = keyboard.next();
 		System.out.print("관리자 PW : ");
 		String adminPassword = keyboard.next();
-		System.out.println("관리자 이름 : ");
+		System.out.print("관리자 이름 : ");
 		String adminName = keyboard.next();
 		
 		Admin adminUpdateInfo = new Admin(adminNumber, adminID, adminPassword, adminName);

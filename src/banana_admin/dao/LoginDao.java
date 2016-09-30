@@ -27,17 +27,16 @@ public class LoginDao {
 			pstmt.setString(1, login.getLoginId());
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
-
+			if(rs.next()){				
 				userPassword = rs.getString(1);
-			}
 
-			if(userPassword.equals(login.getLoginPassword())){
-				//맞으면 repository에 넣기
-				success = true;
-				LoginRepository.getLogin().setLoginId(login.getLoginId());
-				LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
-			}
+				if(userPassword.equals(login.getLoginPassword())){
+					//맞으면 repository에 넣기
+					success = true;
+					LoginRepository.getLogin().setLoginId(login.getLoginId());
+					LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+				}
+			} 
 
 		} catch(SQLException e){
 

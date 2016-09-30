@@ -15,11 +15,12 @@ public class AdminMenuView {
 	}
 
 	public void adminMenuView(){
-		//차트 뜨기.
+
 		while(true){
-			System.out.println("[관리자 메뉴]");
+			System.out.println("\n[관리자 메뉴]");
 			System.out.print("[1.로그인 2.프로그램 종료] : ");
 			int choiceAdminMenu = 0;
+
 			try{
 
 				choiceAdminMenu= keyboard.nextInt();
@@ -45,7 +46,7 @@ public class AdminMenuView {
 	public void adminSubMenuView_M(){
 
 		while(true){
-			System.out.println("[M관리자 메뉴]");
+			System.out.println("\n[M관리자 메뉴]");
 			System.out.print("[1.관리자 관리 2.음원 관리 3.회원 관리 4.이용권 관리 5.감정 관리 6.통계 0.프로그램종료] : ");
 			int choiceSubAdminMenu = 0;
 
@@ -75,7 +76,7 @@ public class AdminMenuView {
 
 				} else if(choiceSubAdminMenu == 6){
 
-					//구현예정
+					Controllers.getStatsController().requestStatsAnalysis();
 
 				}  else if(choiceSubAdminMenu == 0){
 
@@ -96,7 +97,7 @@ public class AdminMenuView {
 	public void adminSubMenuView(){
 
 		while(true){
-			System.out.println("[관리자 메뉴]");
+			System.out.println("\n[관리자 메뉴]");
 			System.out.print("[1.음원 관리 2.회원 관리 3.이용권 관리 4.감정 관리 5.통계 0.프로그램종료] : ");
 			int choiceSubAdminMenu = 0;
 
@@ -121,7 +122,7 @@ public class AdminMenuView {
 
 				} else if(choiceSubAdminMenu == 5){
 
-					//구현예정
+					Controllers.getStatsController().requestStatsAnalysis();
 
 				} else if(choiceSubAdminMenu == 0){
 
