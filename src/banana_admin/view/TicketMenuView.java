@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.sun.corba.se.impl.io.TypeMismatchException;
-
 import banana_admin.controller.Controllers;
 import banana_admin.domain.Ticket;
 
